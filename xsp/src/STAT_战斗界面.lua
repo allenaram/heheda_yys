@@ -500,10 +500,10 @@ function 战斗界面.标记己方(己方已点)
 		mSleep(666)
 		local targetQuest
 		if 参数.任务 == '突破' and 参数.突破方式 == '个人突破' or
-			参数.当前副任务 == '个人突破' then
+			参数.当前副任务 == '个人突破' and not 参数.主任务 then
 			targetQuest = 参数.个人突破标记己方
 		elseif 参数.任务 == '突破' and 参数.突破方式 == '寮突破' or 
-			参数.当前副任务 == '寮突破' then
+			参数.当前副任务 == '寮突破' and not 参数.主任务 then
 			targetQuest = 参数.寮突破标记己方
 		elseif 参数.任务 == '修罗战场' then
 			targetQuest = 参数.修罗战场标记己方
