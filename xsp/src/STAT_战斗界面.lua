@@ -70,7 +70,7 @@ function 战斗界面.to战斗胜利界面()
 			操作.点击按钮(按钮.战斗界面_视角调整按钮)
 			mSleep(1500)
 		else
-			if 参数.任务 == '海国退治' and 参数.主任务 then
+			if 参数.任务 == '海国退治' and 参数.主任务 and 参数.海归退治_退出分数~=100000000 then
 				战斗界面.识别伤害()
 			end
 			已点怪, 开局怪未点 = 战斗界面.标记(已点怪, 开局怪未点)
@@ -601,11 +601,19 @@ function 战斗界面.标记己方(己方已点)
 end
 
 function 战斗界面.识别伤害()
-	local damage = 操作.字符识别({88,88,260,130}, {"0xffca56-0x3f3f3f"})
-	damage = damage == "" and 0 or tonumber(damage)
-	sysLog("伤害： "..damage)
-	if damage >= 5000000 then
-		return 战斗界面.to战斗退出界面()
+	if 参数.海归退治_退出分数 == 10000000 then
+		local damage = 操作.字符识别({88,88,260,130}, {"0xffca56-0x3f3f3f"})
+		damage = damage == "" and 0 or tonumber(damage)
+		sysLog("伤害： "..damage)
+		if damage >= 10000000 then
+			return 战斗界面.to战斗退出界面()
+		end
+	else
+		local num = 操作.字符识别({98,91,124,126}, {"0xffca56-0x3f3f3f"})
+		--sysLog(num)
+		if num == 5 then
+			return 战斗界面.to战斗退出界面()
+		end
 	end
 end
 
