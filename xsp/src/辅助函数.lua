@@ -20,6 +20,12 @@ function 操作.点击(p,dx,dy)
 end
 
 function 操作.点击按钮(button) --(x1,y1)按钮左上角，(x2,y2)按钮右下角
+	if nil == button.x1 then
+		button.x1 = button[1]
+		button.y1 = button[2]
+		button.x2 = button[3]
+		button.y2 = button[4]
+	end
 	操作.点击({x=button.x1,y=button.y1},button.x2-button.x1,button.y2-button.y1)
 end
 

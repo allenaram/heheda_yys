@@ -43,8 +43,229 @@ if true then
 		参数.体服=false
 	end
 	if 参数.体服 then
+		标识.御魂界面 = {0x5e546c,"-5|-317|0x363347,234|-325|0x6d4040,359|5|0x7d5655,693|9|0x757153,675|70|0x7f795a,48|-72|0x321f1e,401|-200|0x332120", 95, 331, 463, 368, 494}
+		按钮.御魂界面_大蛇按钮={x1=153,y1=220,x2=325,y2=423}
+		按钮.御魂界面_业原火按钮={x1=493,y1=185,x2=680,y2=429}
+		按钮.御魂界面_卑弥呼按钮 = {x1=830,y1=174,x2=1045,y2=431}
 		
+		标识.大蛇界面 = {0x1d1d36,"3|-8|0x1c1c34,-6|6|0x1d1d35,16|-22|0xd7d3cb,26|-28|0x1c1c34,34|-16|0x22223b,44|-2|0x29294a,53|5|0x2c2c4d,66|25|0xd5d2c9", 95, 484, 169, 504, 191}
+		按钮.大蛇界面_组队按钮 = {x1=855,y1=554,x2=896,y2=579}
+		按钮.大蛇界面_挑战按钮 = {x1=1010,y1=549,x2=1043,y2=586}
+		按钮.大蛇界面_关闭按钮 = {x1=31,y1=28,x2=53,y2=51}
+		按钮.大蛇界面_悲鸣按钮 = {}
 		
+		标识.觉醒界面 = {0x856c95,"2|-374|0x302d43,-255|-9|0x71819a,-263|-379|0x212c3a,-484|5|0x77775e,-523|-378|0x353426,-774|-3|0x7d545c,-799|-366|0x4e2d31", 95, 986, 481, 1046, 521}
+		按钮.觉醒界面_火麒麟按钮={85,168,258,449}
+		按钮.觉醒界面_风麒麟按钮={353,141,510,449}
+		按钮.觉醒界面_水麒麟按钮={616,131,785,461}
+		按钮.觉醒界面_雷麒麟按钮={886,151,1050,459}
+		按钮.觉醒界面_退出按钮={33,30,53,50}
+		
+		标识.麒麟界面={0x1e4762,"1|21|0x1d415b,13|3|0x15344a,-154|163|0xe5dcc4,-4|162|0xe8dfc7,35|229|0x371f16", 95, 1023, 371, 1040, 396}
+		按钮.麒麟界面_组队按钮={856,548,898,581}
+		按钮.麒麟界面_挑战按钮={1005,543,1047,584}
+		按钮.麒麟界面_关闭按钮={36,33,53,53}
+		
+		function 大蛇界面.层数识别预处理(X, Y)
+			-- 图像二值化 --
+			local colorTbl = binarizeImage({
+				rect = {X,Y,X+32,Y+32},
+				diff = {"0x34312e-0x4f4f4f"}
+			})
+			-- 把无效行（全1行）重置成全0行 --
+			for _, row in pairs(colorTbl) do
+				local 无效行 = true
+				for n = 1, #row do
+					if row[n] == 0 then
+						无效行 = false
+						break
+					end
+				end
+				if 无效行 then
+					for n = 1, #row do
+						row[n] = 0
+					end
+				end
+			end
+			
+			local 全零行数=0
+			for _, row in pairs(colorTbl) do
+				local 全零行 = true
+				for n = 1, #row do
+					if row[n] == 1 then
+						全零行 = false
+						break
+					end
+				end
+				if 全零行 then
+					全零行数 = 全零行数 + 1
+				end
+			end
+			--  sysLog(string.format('全零行数：%d，总行数：%d',全零行数,#colorTbl))
+			--	for _, row in pairs(colorTbl) do
+			--		sysLog(table.concat(row, ','))
+			--	end
+			local 字符有效 = 全零行数 > (#colorTbl*3/4) and false or true
+			return 字符有效, colorTbl
+		end
+
+		function 选层.选择层数(目标层数, 寻找方向, ocr)
+			local x1,y1,x2,y2
+			if 寻找方向=='从上到下' then	
+				x1,y1,x2,y2 = 330, 200, 330, 350
+			elseif 寻找方向=='从下到上' then
+				x1,y1,x2,y2 = 330, 350, 330, 200
+			end	
+			
+			local found = false
+			local 层数按钮 = {x=-1, y=-1}
+			for i = 1, 3 do
+				local X = 250
+				keepScreen(true)
+				if 目标层数=='悲鸣' then
+					if 操作.识别点击(按钮.大蛇界面_悲鸣) then
+						mSleep(500)
+						return true
+					end
+				else
+					for Y = 528, 132, -5 do
+						local 字符有效, colorTbl = 选层.层数识别预处理(X, Y)
+						local code, text
+						if 字符有效 then
+							code, text = ocr:getText({
+								data = colorTbl,
+								whitelist = "壹贰叁肆伍陆柒捌玖拾" 
+							})
+						end
+						if trim(text) == 目标层数 then 
+							层数按钮 = {x=X, y=Y+15}
+							操作.点击(层数按钮)
+							found = true
+							mSleep(500)
+							break
+						end
+					end
+				end
+				keepScreen(false)
+				if found then
+					break
+				end
+				
+				操作.滑动(x1,y1,x2,y2,200)
+				mSleep(600)
+			end
+			return found
+		end
+		
+		function 麒麟界面.to组队界面()
+			for i=1,5 do
+				if 操作.识别2(标识.麒麟界面) then
+					break
+				elseif i==5 then
+					return 执行任务.重新识别()
+				end
+				mSleep(300*参数.延时倍数)
+			end
+			sysLog('当前位置：麒麟面板')
+			
+			if 参数.使用默认层数 then
+				操作.点击按钮(按钮.麒麟界面_组队按钮)
+				mSleep(666) 
+				return 麒麟界面.Next()
+			end
+			
+			local ocr, msg = createOCR({
+				type = "tesseract",
+				path = "res/", 
+				lang = "chi",
+				psm=6
+			})
+			
+			while true do
+				if 麒麟界面.选择层数(参数.觉醒层数, '从上到下', ocr) then
+					操作.点击按钮(按钮.麒麟界面_组队按钮)
+					mSleep(666) 
+					ocr:release()
+					return 麒麟界面.Next()
+				end
+				if 麒麟界面.选择层数(参数.觉醒层数, '从下到上', ocr) then
+					操作.点击按钮(按钮.麒麟界面_组队按钮)
+					mSleep(666) 
+					ocr:release()
+					return 麒麟界面.Next()
+				end
+				
+				if not 操作.识别2(标识.麒麟界面) then	
+					ocr:release()
+					return 执行任务.重新识别()
+				end
+			end
+			
+		end
+
+		function 麒麟界面.to战斗准备界面()
+			for i=1,5 do
+				if 操作.识别2(标识.麒麟界面) then
+					break
+				elseif i==5 then
+					return 执行任务.重新识别()
+				end
+				mSleep(300*参数.延时倍数)
+			end
+			sysLog('当前位置：麒麟面板')
+			
+			执行任务.检查副任务()
+			
+			if 参数.使用默认层数 then
+				操作.点击按钮(按钮.麒麟界面_挑战按钮)
+				mSleep(2000)
+				return 麒麟界面.Next()
+			end
+				
+			local ocr, msg = createOCR({
+				type = "tesseract",
+				path = "res/", 
+				lang = "chi",
+				psm=6
+			})
+			
+			while true do
+				if 麒麟界面.选择层数(参数.觉醒层数, '从上到下', ocr) then
+					操作.点击按钮(按钮.麒麟界面_挑战按钮)
+					mSleep(2000)
+					ocr:release()
+					return 麒麟界面.Next()
+				end
+				if 麒麟界面.选择层数(参数.觉醒层数, '从下到上', ocr) then
+					操作.点击按钮(按钮.麒麟界面_挑战按钮)
+					mSleep(2000)
+					ocr:release()
+					return 麒麟界面.Next()
+				end
+				
+				if not 操作.识别2(标识.麒麟界面) then	
+					ocr:release()
+					return 执行任务.重新识别()
+				end
+			end
+			
+		end
+
+		function 麒麟界面.to探索界面()
+			for i=1,5 do
+				if 操作.识别2(标识.麒麟界面) then
+					break
+				elseif i==5 then
+					return 执行任务.重新识别()
+				end
+				mSleep(300*参数.延时倍数)
+			end
+			sysLog('当前位置：麒麟面板')
+			
+			操作.点击按钮(按钮.麒麟界面_关闭按钮)
+			mSleep(666)
+			return 麒麟界面.Next()
+		end
 		
 	end
 	

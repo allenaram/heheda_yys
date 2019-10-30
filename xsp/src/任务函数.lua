@@ -1872,15 +1872,25 @@ function 执行任务.觉醒()
 			keepScreen(false)
 			return 觉醒界面.to麒麟界面()
 		end
-		
-		if 操作.或识别({标识.麒麟界面1,标识.麒麟界面2},false) then
-			keepScreen(false)
-			if 参数.组队方式~='单人' then 
-				return 麒麟界面.to组队界面()
-			else
-				return 麒麟界面.to战斗准备界面()
+		if not 参数.体服 then
+			if 操作.或识别({标识.麒麟界面1,标识.麒麟界面2},false) then
+				keepScreen(false)
+				if 参数.组队方式~='单人' then 
+					return 麒麟界面.to组队界面()
+				else
+					return 麒麟界面.to战斗准备界面()
+				end
 			end
-		end	
+		else
+			if 操作.识别2(标识.麒麟界面) then
+				keepScreen(false)
+				if 参数.组队方式~='单人' then 
+					return 麒麟界面.to组队界面()
+				else
+					return 麒麟界面.to战斗准备界面()
+				end
+			end
+		end
 		
 		if 参数.组队方式~='单人' then
 			if 操作.识别2(标识.组队界面) then

@@ -569,7 +569,7 @@ function 战斗界面.标记己方(己方已点)
 		return true
 	end
 	
-	if 参数.任务=='觉醒' and 参数.主任务 and 参数.探索标记己方~=0 and not(己方已点) then
+	if 参数.任务=='觉醒' and 参数.主任务 and 参数.觉醒标记己方~=0 and not(己方已点) then
 		local tTarget = 
 		{
 			["左前"] = 按钮.战斗界面_双排站位_左前,
