@@ -253,7 +253,7 @@ end
 
 
 function 战斗界面.标记(已点怪, 开局怪未点)
-	if 参数.交叉超鬼王 and 参数.标记超鬼王 and not(参数.主任务) and 参数.超鬼王中 then
+	if 参数.交叉超鬼王 and 参数.标记超鬼王 and not 参数.主任务 and 参数.超鬼王中 then
 		-- 标记BOSS和草人 --
 		if 参数.超鬼王点怪方式=='标记BOSS和草人' then
 			local enemyClicked = ClickEnemyOrBogy(已点怪, 开局怪未点, 按钮.战斗界面_标记超鬼王区域, 标识.战斗界面_草人血量, 按钮.战斗界面_草人)
@@ -263,139 +263,80 @@ function 战斗界面.标记(已点怪, 开局怪未点)
 			local enemyClicked = ClickBogy(已点怪, 开局怪未点, 按钮.战斗界面_标记超鬼王区域, 标识.战斗界面_草人血量, 按钮.战斗界面_草人)
 			return enemyClicked
 		-- 只标记BOSS --	
-		elseif not(已点怪) then 
+		elseif not 已点怪 then 
 			连点(按钮.战斗界面_标记超鬼王区域)
 			return true
 		end
 	end
 	
-	if 参数.任务=='大蛇' and 参数.御魂点怪 and 参数.主任务 and not(已点怪) then
-		--math.randomseed(tostring(os.time()):reverse():sub(1, 7))
-		if 操作.识别2(标识.战斗界面_回目) then
-			参数.回目数=参数.回目数+1
-		else
+	if 参数.任务=='大蛇' and 参数.御魂点怪 and 参数.主任务 and not 已点怪 then
+		if not 操作.识别2(标识.战斗界面_回目) then
 			return false
 		end
-		if 参数.回目数==3 then
-			sysLog('三回目')
-			--mSleep(math.random(180,200))
-			if 参数.御魂点怪三回目=='左' then
-				连点(按钮.战斗界面_御魂左怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_御魂左怪,4)
-			elseif 参数.御魂点怪三回目=='中' then
-				连点(按钮.战斗界面_御魂中怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_御魂中怪,4)
-			elseif 参数.御魂点怪三回目=='右' then
-				连点(按钮.战斗界面_御魂右怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_御魂右怪,4)
-			end
-			mSleep(2000)
-			return true
-		elseif 参数.回目数==2 then
-			sysLog('二回目')
-			--mSleep(math.random(180,200))
-			if 参数.御魂点怪二回目=='左' then
-				连点(按钮.战斗界面_御魂左怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_御魂左怪,4)
-			elseif 参数.御魂点怪二回目=='中' then
-				连点(按钮.战斗界面_御魂中怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_御魂中怪,4)
-			elseif 参数.御魂点怪二回目=='右' then
-				连点(按钮.战斗界面_御魂右怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_御魂右怪,4)
-			end
-			mSleep(2000)
-		elseif 参数.回目数==1 then
-			sysLog('一回目')
-			--mSleep(math.random(180,200))
-			if 参数.御魂点怪一回目=='左' then
-				连点(按钮.战斗界面_御魂左怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_御魂左怪,4)
-			elseif 参数.御魂点怪一回目=='中' then
-				连点(按钮.战斗界面_御魂中怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_御魂中怪,4)
-			elseif 参数.御魂点怪一回目=='右' then
-				连点(按钮.战斗界面_御魂右怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_御魂右怪,4)
-			end
-			mSleep(2000)
-		end
-		return false
+		参数.回目数 = 参数.回目数 + 1
+		
+		local tLayer = 
+		{
+			[1] = 参数.御魂点怪一回目,
+			[2] = 参数.御魂点怪二回目,
+			[3] = 参数.御魂点怪三回目,
+		}
+		local tMsg = 
+		{
+			[1] = "一回目",
+			[2] = "二回目",
+			[3] = "三回目",
+		}
+		local tTar = 
+		{
+			['左'] = 按钮.战斗界面_御魂左怪,
+			['中'] = 按钮.战斗界面_御魂中怪,
+			['右'] = 按钮.战斗界面_御魂右怪,
+		}
+		sysLog(tMsg[参数.回目数])
+		local tar = tTar[tLayer[参数.回目数]]
+		连点(tar, 7)
+		mSleep(666)
+		连点(tar, 4)
+		mSleep(2000)
+		return (参数.回目数 == 3 and true or false)
 	end
 	
-	if 参数.任务=='修罗战场' and 参数.修罗战场_点怪 and 参数.主任务 and not(已点怪) then
-		--math.randomseed(tostring(os.time()):reverse():sub(1, 7))
-		if 操作.识别2(标识.战斗界面_回目) then
-			参数.回目数=参数.回目数+1
-		else
+	if 参数.任务=='修罗战场' and 参数.修罗战场_点怪 and 参数.主任务 and not 已点怪 then
+		if not 操作.识别2(标识.战斗界面_回目) then
 			return false
 		end
-		if 参数.回目数==3 then
-			sysLog('三回目')
-			--mSleep(math.random(180,200))
-			if 参数.修罗战场_点怪三回目=='左' then
-				连点(按钮.战斗界面_修罗战场左怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_修罗战场左怪,4)
-			elseif 参数.修罗战场_点怪三回目=='中' then
-				连点(按钮.战斗界面_修罗战场中怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_修罗战场中怪,4)
-			elseif 参数.修罗战场_点怪三回目=='右' then
-				连点(按钮.战斗界面_修罗战场右怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_修罗战场右怪,4)
-			end
-			mSleep(2000)
-			return true
-		elseif 参数.回目数==2 then
-			sysLog('二回目')
-			--mSleep(math.random(180,200))
-			if 参数.修罗战场_点怪二回目=='左' then
-				连点(按钮.战斗界面_修罗战场左怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_修罗战场左怪,4)
-			elseif 参数.修罗战场_点怪二回目=='中' then
-				连点(按钮.战斗界面_修罗战场中怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_修罗战场中怪,4)
-			elseif 参数.修罗战场_点怪二回目=='右' then
-				连点(按钮.战斗界面_修罗战场右怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_修罗战场右怪,4)
-			end
-			mSleep(2000)
-		elseif 参数.回目数==1 then
-			sysLog('一回目')
-			--mSleep(math.random(180,200))
-			if 参数.修罗战场_点怪一回目=='左' then
-				连点(按钮.战斗界面_修罗战场左怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_修罗战场左怪,4)
-			elseif 参数.修罗战场_点怪一回目=='中' then
-				连点(按钮.战斗界面_修罗战场中怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_修罗战场中怪,4)
-			elseif 参数.修罗战场_点怪一回目=='右' then
-				连点(按钮.战斗界面_修罗战场右怪,7)
-				mSleep(666)
-				连点(按钮.战斗界面_修罗战场右怪,4)
-			end
-			mSleep(2000)
-		end
-		return false
+		参数.回目数 = 参数.回目数 + 1
+		
+		local tLayer = 
+		{
+			[1] = 参数.修罗战场_点怪一回目,
+			[2] = 参数.修罗战场_点怪二回目,
+			[3] = 参数.修罗战场_点怪三回目,
+		}
+		local tMsg = 
+		{
+			[1] = "一回目",
+			[2] = "二回目",
+			[3] = "三回目",
+		}
+		local tTar = 
+		{
+			['左'] = 按钮.战斗界面_修罗战场左怪,
+			['中'] = 按钮.战斗界面_修罗战场中怪,
+			['右'] = 按钮.战斗界面_修罗战场右怪,
+		}
+		sysLog(tMsg[参数.回目数])
+		local tar = tTar[tLayer[参数.回目数]]
+		连点(tar, 7)
+		mSleep(666)
+		连点(tar, 4)
+		mSleep(2000)
+		return (参数.回目数 == 3 and true or false)
 	end
 	
-	if 参数.任务=='海国退治' and 参数.主任务 and 参数.海国退治_标记~=0 and (not 已点怪 or 参数.海国退治_标记=='Boss及草人') then
+	if 参数.任务=='海国退治' and 参数.主任务 and 参数.海国退治_标记~=0 and 
+		(not 已点怪 or 参数.海国退治_标记=='Boss及草人') then
 		-- 标记小怪 --
 		if 参数.海国退治_标记 == '小怪' then
 			连点(按钮.战斗界面_海国退治小怪)
@@ -416,11 +357,11 @@ function 战斗界面.标记(已点怪, 开局怪未点)
 			return enemyClicked
 		end
 		return true
-	elseif 参数.任务=='海国退治' and 参数.主任务 then
-		return true
 	end
 	
-	if (参数.任务=='离岛之歌' and 参数.主任务 or 参数.交叉离岛 and not(参数.主任务) and 参数.当前副任务=='离岛之歌' ) and 参数.离岛点怪 and (not(已点怪) or 参数.离岛点怪目标=='大怪及草人') then
+	if (参数.任务=='离岛之歌' and 参数.主任务 or 
+		参数.交叉离岛 and not 参数.主任务 and 参数.当前副任务=='离岛之歌') and 
+		参数.离岛点怪 and (not 已点怪  or 参数.离岛点怪目标=='大怪及草人') then
 		-- 标记小怪 --
 		if 参数.离岛点怪目标=='小怪' then
 			连点(按钮.战斗界面_离岛小怪)
@@ -433,18 +374,14 @@ function 战斗界面.标记(已点怪, 开局怪未点)
 			return enemyClicked
 		end
 		return true
-	elseif 参数.任务=='离岛之歌' and 参数.主任务 or 参数.交叉离岛 and not(参数.主任务) and 参数.当前副任务=='离岛之歌'  then
-		return true
 	end
 	
-	if 参数.任务=='觉醒' and 参数.觉醒点怪 and 参数.主任务 and not(已点怪) then
+	if 参数.任务=='觉醒' and 参数.觉醒点怪 and 参数.主任务 and not 已点怪 then
 		if 参数.觉醒点怪目标=='小怪' then
 			连点(按钮.战斗界面_觉醒小怪, 3)
 		elseif 参数.觉醒点怪目标=='大怪' then
 			连点(按钮.战斗界面_觉醒大怪, 3)
 		end
-		return true
-	elseif 参数.任务=='觉醒' then
 		return true
 	end
 	
@@ -455,14 +392,13 @@ function 战斗界面.标记(已点怪, 开局怪未点)
 			连点(按钮.战斗界面_探索大怪, 3)
 		end
 		return true
-	elseif 参数.任务=='探索' then
-		return true
 	end
 	
 	if 参数.任务=='御灵' and 参数.御灵点草人 and 参数.主任务 then
-		if not(操作.识别2(标识.战斗界面_已点怪)) then
+		if not 操作.识别2(标识.战斗界面_已点怪) then
 			操作.识别点击(标识.战斗界面_草人血量（御灵）,true,0,0,33,100,true)
 		end
+		return
 	end
 	
 	if 参数.任务=='轮回秘境' and 参数.轮回秘境_标记~=nil and 参数.主任务 and not(已点怪) then
@@ -472,11 +408,9 @@ function 战斗界面.标记(已点怪, 开局怪未点)
 			连点(按钮.战斗界面_轮回秘境大怪)
 		end
 		return true
-	elseif 参数.任务=='轮回秘境' then
-		return true
 	end
 	
-	return false
+	return true
 end
 
 function 战斗界面.标记己方(己方已点)

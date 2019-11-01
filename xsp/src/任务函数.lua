@@ -766,6 +766,10 @@ function 执行任务.检查副任务()
 		执行任务.识别超鬼王()
 	end
 	
+	if 参数.交叉离岛 and 参数.主任务 and mTime()>=参数.离岛CD冷却时刻 then
+		return 执行任务.切换离岛()
+	end
+	
 	if 参数.交叉犬夜叉 and 参数.主任务 and (mTime()-参数.犬夜叉开始计时时刻)>1800000 then
 		return 执行任务.切换犬夜叉()
 	end
@@ -1872,23 +1876,13 @@ function 执行任务.觉醒()
 			keepScreen(false)
 			return 觉醒界面.to麒麟界面()
 		end
-		if not 参数.体服 then
-			if 操作.或识别({标识.麒麟界面1,标识.麒麟界面2},false) then
-				keepScreen(false)
-				if 参数.组队方式~='单人' then 
-					return 麒麟界面.to组队界面()
-				else
-					return 麒麟界面.to战斗准备界面()
-				end
-			end
-		else
-			if 操作.识别2(标识.麒麟界面) then
-				keepScreen(false)
-				if 参数.组队方式~='单人' then 
-					return 麒麟界面.to组队界面()
-				else
-					return 麒麟界面.to战斗准备界面()
-				end
+		
+		if 操作.或识别({标识.麒麟界面1,标识.麒麟界面2},false) then
+			keepScreen(false)
+			if 参数.组队方式~='单人' then 
+				return 麒麟界面.to组队界面()
+			else
+				return 麒麟界面.to战斗准备界面()
 			end
 		end
 		
