@@ -52,7 +52,6 @@ if true then
 		按钮.大蛇界面_组队按钮 = {x1=855,y1=554,x2=896,y2=579}
 		按钮.大蛇界面_挑战按钮 = {x1=1010,y1=549,x2=1043,y2=586}
 		按钮.大蛇界面_关闭按钮 = {x1=31,y1=28,x2=53,y2=51}
-		按钮.大蛇界面_悲鸣按钮 = {}
 		
 		标识.觉醒界面 = {0x856c95,"2|-374|0x302d43,-255|-9|0x71819a,-263|-379|0x212c3a,-484|5|0x77775e,-523|-378|0x353426,-774|-3|0x7d545c,-799|-366|0x4e2d31", 95, 986, 481, 1046, 521}
 		按钮.觉醒界面_火麒麟按钮={85,168,258,449}
@@ -129,6 +128,11 @@ if true then
 		end
 
 		function 选层.选择层数(目标层数, 寻找方向, ocr)
+			local isEleven = false
+			if 目标层数 == '悲鸣' then
+				isEleven = true
+				目标层数 = '拾'
+			end
 			local x1,y1,x2,y2
 			if 寻找方向=='从上到下' then	
 				x1,y1,x2,y2 = 330, 200, 330, 350
@@ -141,28 +145,22 @@ if true then
 			for i = 1, 3 do
 				local X = 250
 				keepScreen(true)
-				if 目标层数=='悲鸣' then
-					if 操作.识别点击(按钮.大蛇界面_悲鸣) then
-						mSleep(500)
-						return true
+				for Y = 528, 132, -5 do
+					local 字符有效, colorTbl = 选层.层数识别预处理(X, Y)
+					local code, text
+					if 字符有效 then
+						code, text = ocr:getText({
+							data = colorTbl,
+							whitelist = "壹贰叁肆伍陆柒捌玖拾" 
+						})
 					end
-				else
-					for Y = 528, 132, -5 do
-						local 字符有效, colorTbl = 选层.层数识别预处理(X, Y)
-						local code, text
-						if 字符有效 then
-							code, text = ocr:getText({
-								data = colorTbl,
-								whitelist = "壹贰叁肆伍陆柒捌玖拾" 
-							})
-						end
-						if trim(text) == 目标层数 then 
-							层数按钮 = {x=X, y=Y+15}
-							操作.点击(层数按钮)
-							found = true
-							mSleep(500)
-							break
-						end
+					if trim(text) == 目标层数 
+						and not (isEleven and Y>=413) then --悲鸣
+						层数按钮 = isEleven and {x=X, y=Y+93} or {x=X, y=Y+15}
+						操作.点击(层数按钮)
+						found = true
+						mSleep(500)
+						break
 					end
 				end
 				keepScreen(false)
