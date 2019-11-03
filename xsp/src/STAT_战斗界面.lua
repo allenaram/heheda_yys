@@ -452,6 +452,23 @@ function 战斗界面.标记(已点怪, 开局怪未点)
 		return (参数.回目数 == 3 and true or false)
 	end
 	
+	if 参数.任务=='卑弥呼' and 参数.卑弥呼_标记~=0 and 参数.主任务 and 
+	(not 已点怪 or 参数.卑弥呼_标记=="Boss及草人") then
+		-- 标记小怪 --
+		if 参数.卑弥呼_标记=='左' then
+			连点(按钮.战斗界面_卑弥呼_左怪)
+		elseif 参数.卑弥呼_标记=='右' then
+			连点(按钮.战斗界面_卑弥呼_右怪)
+		-- 标记BOSS --
+		elseif 参数.卑弥呼_标记=='Boss' then
+			连点(按钮.战斗界面_卑弥呼_Boss)
+		-- 有草人点草人，没草人点怪 --
+		else
+			local enemyClicked = ClickEnemyOrBogy(已点怪, 开局怪未点, 按钮.战斗界面_卑弥呼_Boss, 标识.战斗界面_草人（卑弥呼）, 按钮.战斗界面_卑弥呼_草人)
+			return enemyClicked
+		end
+		return true
+	end
 	return true
 end
 
@@ -570,6 +587,20 @@ function 战斗界面.标记己方(己方已点)
 		}
 		mSleep(666)
 		操作.点击按钮(tTarget[参数.海国退治标记己方])
+		return true
+	end
+	
+	if 参数.任务=="卑弥呼" and 参数.主任务 and 参数.卑弥呼_标记己方~=0 and not 己方已点 then
+		local tTarget = 
+		{
+			["1号位"] = 按钮.战斗界面_卑弥呼_己方1号位,
+			["2号位"] = 按钮.战斗界面_卑弥呼_己方2号位,
+			["3号位"] = 按钮.战斗界面_卑弥呼_己方3号位,
+			["4号位"] = 按钮.战斗界面_卑弥呼_己方4号位,
+			["5号位"] = 按钮.战斗界面_卑弥呼_己方5号位,
+		}
+		mSleep(666)
+		操作.点击按钮(tTarget[参数.卑弥呼_标记己方])
 		return true
 	end
 	

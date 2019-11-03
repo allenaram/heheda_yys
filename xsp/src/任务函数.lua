@@ -52,6 +52,7 @@ function 执行任务.设置流程()
 		真蛇界面.Next=探索界面.to御魂界面
 		探索准备界面.Next=探索界面.to御魂界面
 		换狗粮界面.Next=战斗准备界面.to战斗界面
+		
 	elseif 参数.任务=='大蛇'  and 参数.组队方式=='队员' then -- 大蛇-队员
 		执行任务.重新识别=执行任务.大蛇队员
 		执行任务.主任务=执行任务.大蛇队员
@@ -73,6 +74,78 @@ function 执行任务.设置流程()
 		房间退出界面.Next=执行任务.等待邀请.等待
 		房间邀请界面.Next=房间界面.to战斗准备界面（队员）
 		换狗粮界面.Next=战斗准备界面.to战斗界面
+		
+	elseif 参数.任务=='卑弥呼' and 参数.组队方式~='队员' then  -- 卑弥呼-单人/队长
+		执行任务.重新识别=执行任务.卑弥呼
+		执行任务.主任务=执行任务.卑弥呼
+		庭院界面.Next=探索界面.to御魂界面
+		探索界面.Next=御魂界面.to卑弥呼界面
+		if 参数.组队方式=='单人' then
+			御魂界面.Next=卑弥呼界面.to战斗准备界面
+			卑弥呼界面.Next=战斗准备界面.to战斗界面
+			战斗准备界面.Next=战斗界面.to战斗胜利界面
+			战斗界面.Next=战斗胜利界面.to战斗结算界面2
+			战斗胜利界面.Next=战斗结算界面2.to卑弥呼界面
+			战斗结算界面1.Next=战斗结算界面2.to卑弥呼界面
+			战斗结算界面2.Next=卑弥呼界面.to战斗准备界面	
+			战斗结算界面3.Next=卑弥呼界面.to战斗准备界面
+			战斗失败界面.Next=卑弥呼界面.to战斗准备界面
+		else
+			御魂界面.Next=卑弥呼界面.to组队界面
+			卑弥呼界面.Next=组队界面.to创建队伍界面
+			组队界面.Next=创建队伍界面.to房间界面
+			创建队伍界面.Next=房间界面.to战斗准备界面
+			战斗准备界面.Next=战斗界面.to战斗胜利界面
+			战斗界面.Next=战斗胜利界面.to战斗结算界面2
+			if 参数.默认邀请队友 then
+				房间界面.Next=战斗界面.to战斗胜利界面
+				战斗胜利界面.Next=战斗结算界面2.to房间界面
+				战斗结算界面1.Next=战斗结算界面2.to房间界面
+				战斗结算界面2.Next=房间界面.to战斗准备界面
+				战斗结算界面3.Next=房间界面.to战斗准备界面
+				重邀界面.Next=房间界面.to战斗准备界面
+			else
+				房间界面.Next=战斗准备界面.to战斗界面
+				战斗胜利界面.Next=战斗结算界面2.to重邀界面		
+				战斗结算界面1.Next=战斗结算界面2.to重邀界面
+				战斗结算界面2.Next=重邀界面.to房间界面	
+				战斗结算界面3.Next=重邀界面.to房间界面
+				重邀界面.Next=房间界面.to战斗准备界面
+			end
+			if 参数.失败重邀 then 
+				战斗失败界面.Next=重邀界面.to房间界面
+			else 
+				战斗失败界面.Next=重邀界面.to探索界面
+			end
+			房间退出界面.Next=创建队伍界面.to房间界面
+			房间邀请界面.Next=房间界面.to战斗准备界面
+		end
+		真蛇界面.Next=探索界面.to御魂界面
+		探索准备界面.Next=探索界面.to御魂界面
+		换狗粮界面.Next=战斗准备界面.to战斗界面
+		
+	elseif 参数.任务=='卑弥呼'  and 参数.组队方式=='队员' then -- 卑弥呼-队员
+		执行任务.重新识别=执行任务.卑弥呼队员
+		执行任务.主任务=执行任务.卑弥呼队员
+		执行任务.等待邀请.Next=房间界面.to战斗准备界面（队员）
+		战斗准备界面.Next=战斗界面.to战斗胜利界面
+		战斗界面.Next=战斗胜利界面.to战斗结算界面2
+		战斗胜利界面.Next=战斗结算界面2.领奖
+		战斗失败界面.Next=执行任务.等待邀请.等待
+		战斗结算界面1.Next=战斗结算界面2.领奖
+		if not 参数.默认接受邀请 then
+			房间界面.Next=战斗准备界面.to战斗界面
+			战斗结算界面2.Next=执行任务.等待邀请.等待
+			战斗结算界面3.Next=执行任务.等待邀请.等待
+		else
+			房间界面.Next=战斗界面.to战斗胜利界面
+			战斗结算界面2.Next=房间界面.to战斗准备界面（队员）
+			战斗结算界面3.Next=房间界面.to战斗准备界面（队员）
+		end
+		房间退出界面.Next=执行任务.等待邀请.等待
+		房间邀请界面.Next=房间界面.to战斗准备界面（队员）
+		换狗粮界面.Next=战斗准备界面.to战斗界面
+	
 	elseif 参数.任务=='觉醒' and 参数.组队方式~='队员' then  -- 觉醒-单人/队长
 		执行任务.重新识别=执行任务.觉醒
 		执行任务.主任务=执行任务.觉醒
@@ -401,7 +474,10 @@ function 执行任务.设置交叉寮突破流程()
 	elseif 参数.任务=='觉醒' then
 		创建队伍界面.Next=组队界面.to麒麟界面
 		组队界面.Next=麒麟界面.to探索界面
-	else
+	elseif 参数.任务=="卑弥呼" then
+		创建队伍界面.Next=组队界面.to卑弥呼界面
+		组队界面.Next=卑弥呼界面.to探索界面
+	else --妖气、鬼王
 		创建队伍界面.Next=组队界面.to庭院界面
 		组队界面.Next=庭院界面.to探索界面
 	end
@@ -437,6 +513,9 @@ function 执行任务.设置交叉个人突破流程()
 	elseif 参数.任务=='觉醒' then
 		创建队伍界面.Next=组队界面.to麒麟界面
 		组队界面.Next=麒麟界面.to探索界面
+	elseif 参数.任务=="卑弥呼" then
+		创建队伍界面.Next=组队界面.to卑弥呼界面
+		组队界面.Next=卑弥呼界面.to探索界面
 	else
 		创建队伍界面.Next=组队界面.to庭院界面
 		组队界面.Next=庭院界面.to探索界面
@@ -474,6 +553,9 @@ function 执行任务.设置交叉离岛流程()
 	elseif 参数.任务=='觉醒' then
 		创建队伍界面.Next=组队界面.to麒麟界面
 		组队界面.Next=麒麟界面.to探索界面
+	elseif 参数.任务=="卑弥呼" then
+		创建队伍界面.Next=组队界面.to卑弥呼界面
+		组队界面.Next=卑弥呼界面.to探索界面
 	else
 		创建队伍界面.Next=组队界面.to庭院界面
 		组队界面.Next=庭院界面.to离岛界面
@@ -504,6 +586,9 @@ function 执行任务.设置交叉犬夜叉流程()
 	elseif 参数.任务=='觉醒' then
 		创建队伍界面.Next=组队界面.to麒麟界面
 		组队界面.Next=麒麟界面.to探索界面
+	elseif 参数.任务=="卑弥呼" then
+		创建队伍界面.Next=组队界面.to卑弥呼界面
+		组队界面.Next=卑弥呼界面.to探索界面
 	else
 		创建队伍界面.Next=组队界面.to探索界面
 		组队界面.Next=庭院界面.to组队界面
@@ -536,6 +621,9 @@ function 执行任务.设置交叉年兽流程()
 	elseif 参数.任务=='觉醒' then
 		创建队伍界面.Next=组队界面.to麒麟界面
 		组队界面.Next=麒麟界面.to探索界面
+	elseif 参数.任务=="卑弥呼" then
+		创建队伍界面.Next=组队界面.to卑弥呼界面
+		组队界面.Next=卑弥呼界面.to探索界面
 	else
 		创建队伍界面.Next=组队界面.to探索界面
 		组队界面.Next=庭院界面.to组队界面
@@ -586,6 +674,9 @@ function 执行任务.设置结束主任务流程()
 	elseif 参数.任务=='觉醒' then
 		创建队伍界面.Next=组队界面.to麒麟界面
 		组队界面.Next=麒麟界面.to探索界面
+	elseif 参数.任务=="卑弥呼" then
+		创建队伍界面.Next=组队界面.to卑弥呼界面
+		组队界面.Next=卑弥呼界面.to探索界面
 	else
 		组队界面.Next=庭院界面.to探索界面
 	end
@@ -670,6 +761,15 @@ function 执行任务.启动任务()
 			return 执行任务.大蛇()
 		elseif 参数.组队方式=='队员' then
 			return 执行任务.大蛇队员()
+		end
+		
+	elseif 参数.任务=='卑弥呼' then 
+		syslog2(string.format('开始任务：卑弥呼-%s',参数.组队方式))
+		mSleep(2000)
+		if 参数.组队方式~='队员' then
+			return 执行任务.卑弥呼()
+		elseif 参数.组队方式=='队员' then
+			return 执行任务.卑弥呼队员()
 		end
 		
 	elseif 参数.任务=='觉醒' then 
@@ -1565,6 +1665,587 @@ end
 
 -----------大蛇队员-----------
 function 执行任务.大蛇队员()
+	sysLog('重新识别界面中......')
+	for i=1,2 do
+		keepScreen(true)
+		
+		if 操作.识别2(标识.协作界面) then
+			keepScreen(false)
+			return 协作任务界面.处理()
+		end
+		
+		if 操作.识别2(标识.超鬼王界面) then
+			keepScreen(false)
+			if 参数.交叉超鬼王 then
+				return 执行任务.切换超鬼王()
+			else
+				操作.点击按钮(按钮.超鬼王界面_退出按钮)
+				mSleep(300)
+				return 探索界面.to御魂界面()
+			end
+		end
+		
+		if 操作.或识别({标识.庭院界面1,标识.庭院界面2},false) then
+			if 参数.智能开关buff and 参数.调整开关buff=='关' then
+				keepScreen(false)
+				庭院界面.开关buff()
+			end
+			
+			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+				keepScreen(false)
+				庭院界面.切换副任务()
+			end
+		end
+		
+		if 操作.识别2(标识.探索界面) then
+			if 参数.智能开关buff and 参数.调整开关buff=='关' then
+				keepScreen(false)
+				探索界面.开关buff()
+			end
+			
+			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+				keepScreen(false)
+				探索界面.切换副任务(true)
+			end
+		end
+		
+		if 操作.识别2(标识.房间界面) then
+			keepScreen(false)
+			参数.cnt=8
+			参数.等待邀请次数=0
+			return 房间界面.to战斗准备界面（队员）()
+		end
+		
+		if 操作.识别2(标识.房间邀请界面) then
+			keepScreen(false)
+			参数.等待邀请次数=0
+			return 房间邀请界面.to房间界面()
+		end
+		
+		if 操作.识别2(标识.房间退出界面) then
+			keepScreen(false)
+			参数.等待邀请次数=0
+			return 房间退出界面.to创建队伍界面()
+		end
+		
+		if 操作.识别2(标识.房间界面好友资料) then
+			keepScreen(false)
+			操作.点击按钮(按钮.房间界面好友资料_返回按钮)
+			参数.cnt=8
+			参数.等待邀请次数=0
+			sysLog('关闭队友名片')
+			mSleep(600)
+			return 房间界面.to战斗准备界面（队员）()
+		end
+		
+		if 操作.识别2(标识.战斗准备界面) then
+			keepScreen(false)
+			参数.等待邀请次数=0
+			return 战斗准备界面.to战斗界面()
+		end
+		
+		if 操作.识别2(标识.寄养界面) then
+			keepScreen(false)
+			寄养界面.退出()
+		end
+		
+		if 参数.御魂换狗粮 then
+			if 操作.识别2(标识.换狗粮界面) then
+				keepScreen(false)
+				参数.等待邀请次数=0
+				return 换狗粮界面.to战斗准备界面（御魂）()
+			end
+			
+			if 操作.识别2(标识.选稀有度界面) then
+				keepScreen(false)
+				参数.等待邀请次数=0
+				选稀有度界面.选稀有度()
+				return 换狗粮界面.to战斗准备界面（御魂）()
+			end
+		end
+		
+		if 操作.识别2(标识.战斗界面) then
+			keepScreen(false)
+			参数.等待邀请次数=0
+			return 战斗界面.to战斗胜利界面()
+		end
+		
+		if 操作.或识别({标识.公告界面,标识.登录界面1},false) then
+			keepScreen(false)
+			参数.等待邀请次数=0
+			执行任务.设置登录游戏流程()
+			return 执行任务.登录游戏()
+		end
+		
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+			keepScreen(false)
+			参数.等待邀请次数=0
+			return 战斗胜利界面.to战斗结算界面2()
+		end
+		
+		if 操作.识别2(标识.战斗失败界面) then
+			keepScreen(false)
+			参数.等待邀请次数=0
+			return 战斗失败界面.退出()
+		end
+		
+		if 操作.识别2(标识.战斗结算界面1) then
+			keepScreen(false)
+			参数.等待邀请次数=0
+			return 战斗结算界面1.to战斗结算界面2()
+		end
+		
+		if 操作.识别2(标识.战斗结算界面2) then
+			keepScreen(false)
+			参数.等待邀请次数=0
+			return 战斗结算界面2.领奖()
+		end
+		
+		if 操作.识别2(标识.战斗结算界面2_御魂超出上限) then
+			keepScreen(false)
+			参数.御魂超出上限=true
+			操作.点击按钮(按钮.战斗结算界面2_御魂超出上限确定按钮)
+			mSleep(666)
+			return 战斗结算界面2.领奖()
+		end
+		
+		if 操作.识别2(标识.战斗结算界面3) then
+			keepScreen(false)
+			参数.等待邀请次数=0
+			return 战斗结算界面3.领奖()
+		end
+		
+		if 操作.识别2(标识.购买体力界面) then
+			keepScreen(false)
+			参数.等待邀请次数=0
+			return 购买体力界面.操作()
+		end
+		
+		if 操作.识别2(标识.邮箱界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.邮箱界面_关闭)
+			mSleep(1000)
+			return 执行任务.重新识别()
+		end
+		
+		if 操作.识别2(标识.寮公告界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.寮公告界面_确定)
+			mSleep(1000)
+			return 执行任务.重新识别()
+		end
+		
+		if 操作.识别2(标识.召唤界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.召唤界面_返回)
+			mSleep(3000)
+			return 执行任务.重新识别()
+		end
+		
+		if 操作.识别2(标识.结界界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.结界界面_返回)
+			mSleep(3000)
+			return 执行任务.重新识别()
+		end	
+		
+		if 操作.识别2(标识.buff界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.buff界面_退出区域)
+			mSleep(1000)
+			return 执行任务.重新识别()
+		end
+		
+		if 操作.识别2(标识.重连) then
+			keepScreen(false)
+			参数.等待邀请次数=0
+			执行任务.等待重连()
+		end
+		
+		if 操作.识别2(标识.登录动画界面) then
+			keepScreen(false)
+			参数.等待邀请次数=0
+			mSleep(3000)
+			if 操作.识别2(标识.登录动画界面) then
+				执行任务.设置登录游戏流程()
+				return 执行任务.登录游戏()
+			end
+		end
+		
+		if 参数.禁止聊天 then
+			if 操作.识别点击(按钮.频道界面_关闭按钮,true) then
+				keepScreen(false)
+				mSleep(888)
+				return 执行任务.重新识别()
+			end
+		
+			if 操作.识别2(标识.聊天界面) then
+				keepScreen(false)
+				操作.点击按钮(按钮.聊天界面_关闭按钮)
+				mSleep(888)
+				return 执行任务.重新识别()
+			end
+			
+			if 操作.识别2(标识.聊天界面_好友信息) then
+				keepScreen(false)
+				操作.点击按钮(按钮.聊天界面_关闭好友信息)
+				mSleep(888)
+				return 执行任务.重新识别()
+			end
+		end
+		
+		if 操作.识别点击(按钮.式神录界面_返回按钮,true) then
+			keepScreen(false)
+			mSleep(2000)
+			return 执行任务.重新识别()
+		end
+		
+		if 操作.或识别({标识.离岛界面,标识.离岛界面2},false) then
+			keepScreen(false)
+			操作.点击按钮(按钮.离岛界面_返回)
+			mSleep(1000)
+			return 执行任务.重新识别()
+		end
+		
+		if 操作.识别2(标识.道场（居酒屋）界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.道场（居酒屋）界面_关闭)
+			mSleep(666)
+			return 执行任务.重新识别()
+		end
+		
+		if 操作.识别2(标识.浮世澡堂界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.浮世澡堂界面_关闭)
+			mSleep(666)
+			return 执行任务.重新识别()
+		end
+		
+		keepScreen(false)
+		执行任务.检查闪退()
+		
+		if 参数.队员首次全识别 then
+			参数.队员首次全识别=false
+			return 执行任务.等待邀请.等待()
+		end
+		
+		mSleep(500)
+	end
+	
+	return 执行任务.等待邀请.等待()
+	
+end
+----
+
+-----------卑弥呼队长-----------
+function 执行任务.卑弥呼()
+	sysLog('重新识别界面中......')
+	while true do
+		keepScreen(true)
+		
+		if 操作.识别2(标识.协作界面) then
+			keepScreen(false)
+			return 协作任务界面.处理()
+		end
+		
+		if 操作.识别2(标识.超鬼王界面) then
+			keepScreen(false)
+			if 参数.交叉超鬼王 then
+				return 执行任务.切换超鬼王()
+			else
+				操作.点击按钮(按钮.超鬼王界面_退出按钮)
+				mSleep(300)
+				return 探索界面.to御魂界面()
+			end
+		end
+		
+		if 操作.或识别({标识.庭院界面1,标识.庭院界面2},false) then
+			keepScreen(false)
+			return 庭院界面.to探索界面()
+		end
+		
+		if 操作.识别2(标识.探索界面) then
+			keepScreen(false)
+			if 参数.智能开关buff and 参数.调整开关buff~='保持' then
+				探索界面.开关buff()
+			end
+			return 探索界面.to御魂界面()
+		end
+		
+		if 操作.识别2(标识.御魂界面) then
+			keepScreen(false)
+			return 御魂界面.to大蛇界面()
+		end
+		
+		if 操作.识别2(标识.卑弥呼界面) then
+			keepScreen(false)
+			if 参数.组队方式~='单人' then 
+				return 卑弥呼界面.to组队界面()
+			else
+				return 卑弥呼界面.to战斗准备界面()
+			end
+		end	
+		
+		if 参数.组队方式~='单人' then
+			if 操作.识别2(标识.组队界面) then
+				keepScreen(false)
+				return 组队界面.to创建队伍界面()
+			end
+			
+			if 操作.识别2(标识.创建队伍界面) then
+				keepScreen(false)
+				return 创建队伍界面.to房间界面()
+			end
+		end
+		
+		if 操作.识别2(标识.房间界面) then
+			keepScreen(false)
+			参数.cnt=8
+			return 房间界面.to战斗准备界面()
+		end
+		
+		if 操作.识别2(标识.房间邀请界面) then
+			keepScreen(false)
+			return 房间邀请界面.to房间界面()
+		end
+		
+		if 操作.识别2(标识.房间退出界面) then
+			keepScreen(false)
+			return 房间退出界面.to创建队伍界面()
+		end
+		
+		if 操作.识别2(标识.房间界面好友资料) then
+			keepScreen(false)
+			房间界面好友资料.返回()
+		end
+		
+		if 操作.识别2(标识.战斗准备界面) then
+			keepScreen(false)
+			return 战斗准备界面.to战斗界面()
+		end
+		
+		if 操作.识别2(标识.寄养界面) then
+			keepScreen(false)
+			寄养界面.退出()
+		end
+		
+		if 参数.御魂换狗粮 then
+			if 操作.识别2(标识.换狗粮界面) then
+				keepScreen(false)
+				return 换狗粮界面.to战斗准备界面（御魂）()
+			end
+			
+			if 操作.识别2(标识.选稀有度界面) then
+				keepScreen(false)
+				参数.等待邀请次数=0
+				选稀有度界面.选稀有度()
+				return 换狗粮界面.to战斗准备界面（御魂）()
+			end
+		end
+		
+		if 操作.识别2(标识.战斗界面) then
+			keepScreen(false)
+			return 战斗界面.to战斗胜利界面()
+		end
+		
+		if 操作.或识别({标识.公告界面,标识.登录界面1},false) then
+			keepScreen(false)
+			执行任务.设置登录游戏流程()
+			return 执行任务.登录游戏()
+		end
+		
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+			keepScreen(false)
+			return 战斗胜利界面.to战斗结算界面2()
+		end
+		
+		if 操作.识别2(标识.战斗失败界面) then
+			keepScreen(false)
+			if 参数.组队方式~='单人' then
+				return 战斗失败界面.to重邀界面()
+			else
+				return 战斗失败界面.to卑弥呼界面()
+			end
+		end
+		
+		if 操作.识别2(标识.战斗结算界面1) then
+			keepScreen(false)
+			return 战斗结算界面1.to战斗结算界面2()
+		end
+		
+		if 操作.识别2(标识.战斗结算界面2) then
+			keepScreen(false)
+			if 参数.组队方式~='单人' then
+				return 战斗结算界面2.to重邀界面()
+			else
+				return 战斗结算界面2.to卑弥呼界面()
+			end
+		end
+		
+		if 操作.识别2(标识.战斗结算界面2_御魂超出上限) then
+			keepScreen(false)
+			参数.御魂超出上限=true
+			操作.点击按钮(按钮.战斗结算界面2_御魂超出上限确定按钮)
+			mSleep(666)
+			if 参数.组队方式~='单人' then
+				return 战斗结算界面2.to重邀界面()
+			else
+				return 战斗结算界面2.to卑弥呼界面()
+			end
+		end
+		
+		if 操作.识别2(标识.战斗结算界面3) then
+			keepScreen(false)
+			if 参数.组队方式~='单人' then
+				return 战斗结算界面3.to重邀界面()
+			else
+				return 战斗结算界面3.to卑弥呼界面()
+			end
+		end
+		
+		if 操作.识别2(标识.重邀界面) then
+			keepScreen(false)
+			return 重邀界面.to房间界面()
+		end
+		
+		if 操作.识别2(标识.个人突破界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.个人突破界面_退出按钮)
+			mSleep(888)
+			return 探索界面.to御魂界面()
+		end
+		
+		if 操作.识别2(标识.寮突破界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.寮突破界面_退出按钮)
+			mSleep(888)
+			return 探索界面.to御魂界面()
+		end
+		
+		if 操作.识别2(标识.真蛇界面) then
+			keepScreen(false)
+			return 真蛇界面.to探索界面()
+		end
+		
+		if 操作.识别2(标识.购买体力界面) then
+			keepScreen(false)
+			return 购买体力界面.操作()
+		end
+		
+		if 操作.识别2(标识.探索准备界面) then
+			keepScreen(false)
+			return 探索准备界面.to探索界面()
+		end
+		
+		if 操作.识别2(标识.邮箱界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.邮箱界面_关闭)
+			mSleep(1000)
+			return 执行任务.重新识别()
+		end
+		
+		if 操作.识别2(标识.寮公告界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.寮公告界面_确定)
+			mSleep(1000)
+			return 执行任务.重新识别()
+		end
+		
+		if 操作.识别2(标识.召唤界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.召唤界面_返回)
+			mSleep(3000)
+			return 执行任务.重新识别()
+		end
+		
+		if 操作.识别2(标识.结界界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.结界界面_返回)
+			mSleep(3000)
+			return 执行任务.重新识别()
+		end	
+		
+		if 操作.识别2(标识.buff界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.buff界面_退出区域)
+			mSleep(1000)
+			return 执行任务.重新识别()
+		end
+		
+		if 操作.识别2(标识.重连) then
+			keepScreen(false)
+			执行任务.等待重连()
+		end
+		
+		if 操作.识别2(标识.登录动画界面) then
+			keepScreen(false)
+			mSleep(3000)
+			if 操作.识别2(标识.登录动画界面) then
+				执行任务.设置登录游戏流程()
+				return 执行任务.登录游戏()
+			end
+		end
+		
+		if 参数.禁止聊天 then
+			if 操作.识别点击(按钮.频道界面_关闭按钮,true) then
+				keepScreen(false)
+				mSleep(888)
+				return 执行任务.重新识别()
+			end
+		
+			if 操作.识别2(标识.聊天界面) then
+				keepScreen(false)
+				操作.点击按钮(按钮.聊天界面_关闭按钮)
+				mSleep(888)
+				return 执行任务.重新识别()
+			end
+			
+			if 操作.识别2(标识.聊天界面_好友信息) then
+				keepScreen(false)
+				操作.点击按钮(按钮.聊天界面_关闭好友信息)
+				mSleep(888)
+				return 执行任务.重新识别()
+			end
+		end
+		
+		if 操作.识别点击(按钮.式神录界面_返回按钮,true) then
+			keepScreen(false)
+			mSleep(2000)
+			return 执行任务.重新识别()
+		end
+		
+		if 操作.或识别({标识.离岛界面,标识.离岛界面2},false) then
+			keepScreen(false)
+			操作.点击按钮(按钮.离岛界面_返回)
+			mSleep(1000)
+			return 执行任务.重新识别()
+		end
+		
+		if 操作.识别2(标识.道场（居酒屋）界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.道场（居酒屋）界面_关闭)
+			mSleep(666)
+			return 执行任务.重新识别()
+		end
+		
+		if 操作.识别2(标识.浮世澡堂界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.浮世澡堂界面_关闭)
+			mSleep(666)
+			return 执行任务.重新识别()
+		end
+		
+		keepScreen(false)
+		执行任务.检查闪退()
+		mSleep(1000)
+	end
+	
+	
+end
+----
+
+-----------卑弥呼队员-----------
+function 执行任务.卑弥呼队员()
 	sysLog('重新识别界面中......')
 	for i=1,2 do
 		keepScreen(true)
@@ -3068,6 +3749,8 @@ function 执行任务.个人突破()
 					return 组队界面.to大蛇界面()
 				elseif 参数.任务=='觉醒' then
 					return 组队界面.to麒麟界面()
+				elseif 参数.任务=='卑弥呼' then
+					return 组队界面.to卑弥呼界面()
 				else
 					return 组队界面.to庭院界面()
 				end
@@ -3076,6 +3759,11 @@ function 执行任务.个人突破()
 			if 操作.识别2(标识.大蛇界面) then
 				keepScreen(false)
 				return 大蛇界面.to探索界面()
+			end
+			
+			if 操作.识别2(标识.卑弥呼界面) then
+				keepScreen(false)
+				return 卑弥呼界面.to探索界面()
 			end
 			
 			if 操作.或识别({标识.麒麟界面1,标识.麒麟界面2},false) then
@@ -3332,6 +4020,8 @@ function 执行任务.寮突破()
 					return 组队界面.to大蛇界面()
 				elseif 参数.任务=='觉醒' then
 					return 组队界面.to麒麟界面()
+				elseif 参数.任务=='卑弥呼' then
+					return 组队界面.to卑弥呼界面()
 				else
 					return 组队界面.to庭院界面()
 				end
@@ -3340,6 +4030,11 @@ function 执行任务.寮突破()
 			if 操作.识别2(标识.大蛇界面) then
 				keepScreen(false)
 				return 大蛇界面.to探索界面()
+			end
+			
+			if 操作.识别2(标识.卑弥呼界面) then
+				keepScreen(false)
+				return 卑弥呼界面.to探索界面()
 			end
 			
 			if 操作.或识别({标识.麒麟界面1,标识.麒麟界面2},false) then

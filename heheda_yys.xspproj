@@ -1,0 +1,85 @@
+[SOURCE]
+1\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/G_ui.lua
+2\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/log_UI.lua
+3\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/main.lua
+4\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/REQUIRE.lua
+5\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x4e1a\x539f\x706b\x754c\x9762.lua
+6\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x4fee\x7f57\x6218\x573a\x754c\x9762.lua
+7\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x521b\x5efa\x961f\x4f0d\x754c\x9762.lua
+8\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x534f\x4f5c\x4efb\x52a1\x754c\x9762.lua
+9\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x53ec\x5524\x754c\x9762.lua
+10\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x5927\x6c5f\x5c71\x4e4b\x6218\x754c\x9762.lua
+11\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x5927\x6c5f\x5c71\x5b9d\x5e93\x754c\x9762.lua
+12\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x5927\x86c7\x754c\x9762.lua
+13\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x5bc4\x517b\x754c\x9762.lua
+14\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x5e74\x517d\x754c\x9762.lua
+15\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x5ead\x9662\x754c\x9762.lua
+16\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x5f0f\x795e\x5f55\x754c\x9762.lua
+17\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x5fa1\x7075\x754c\x9762.lua
+18\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x5fa1\x9b42\x754c\x9762.lua
+19\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x6218\x6597\x51c6\x5907\x754c\x9762.lua
+20\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x6218\x6597\x5931\x8d25\x754c\x9762.lua
+21\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x6218\x6597\x754c\x9762.lua
+22\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x6218\x6597\x7ed3\x7b97\x754c\x9762.lua
+23\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x6218\x6597\x80dc\x5229\x754c\x9762.lua
+24\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x623f\x95f4\x754c\x9762.lua
+25\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x62bdN\x5361\x754c\x9762.lua
+26\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x6362\x72d7\x7cae\x754c\x9762.lua
+27\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x63a2\x7d22\x5173\x5361\x754c\x9762.lua
+28\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x63a2\x7d22\x51c6\x5907\x754c\x9762.lua
+29\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x63a2\x7d22\x754c\x9762.lua
+30\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x63a2\x7d22\x9080\x8bf7\x754c\x9762.lua
+31\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x661f\x7ea7\x63d0\x5347\x754c\x9762.lua
+32\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x6d6e\x4e16\x6fa1\x5802\x754c\x9762.lua
+33\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x6d77\x56fd\x9000\x6cbb\x754c\x9762.lua
+34\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x6e90\x6c0f\x85cf\x5175\x9601\x754c\x9762.lua
+35\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x767b\x5f55\x6e38\x620f\x754c\x9762.lua
+36\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x771f\x86c7\x754c\x9762.lua
+37\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x77ad\x671b\x5854\x754c\x9762.lua
+38\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x795e\x517d\x754c\x9762.lua
+39\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x79bb\x5c9b\x754c\x9762.lua
+40\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x7a81\x7834\x754c\x9762.lua
+41\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x7ec4\x961f\x754c\x9762.lua
+42\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x7ecf\x9a8c\x9152\x58f6\x6ee1\x754c\x9762.lua
+43\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x80b2\x6210\x754c\x9762.lua
+44\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x89c9\x9192\x754c\x9762.lua
+45\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x8d2d\x4e70\x4f53\x529b\x754c\x9762.lua
+46\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x8d85\x9b3c\x738b\x754c\x9762.lua
+47\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x8f6e\x56de\x79d8\x5883\x51c6\x5907\x754c\x9762.lua
+48\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x8f6e\x56de\x79d8\x5883\x754c\x9762.lua
+49\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x9053\x573a\xff08\x5c45\x9152\x5c4b\xff09\x754c\x9762.lua
+50\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x91cd\x9080\x754c\x9762.lua
+51\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x9b3c\x738b\x521b\x5efa\x961f\x4f0d\x754c\x9762.lua
+52\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x9b3c\x738b\x754c\x9762.lua
+53\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x9e92\x9e9f\x754c\x9762.lua
+54\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/UI_yys.lua
+55\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/\x4efb\x52a1\x51fd\x6570.lua
+56\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/\x53d6\x8272_16\x6bd4\x39.lua
+57\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/\x8f85\x52a9\x51fd\x6570.lua
+58\SOURCEFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/src/STAT_\x5351\x5f25\x547c\x754c\x9762.lua
+size=58
+
+[UI]
+size=0
+
+[RES]
+1\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/chi.traineddata
+2\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/yq.traineddata
+3\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/yqfy.traineddata
+4\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/icons/infobg.png
+5\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/icons/infobg2_0000.png
+6\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/icons/infobg2_0001.png
+7\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/icons/infobg2_0002.png
+8\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/icons/infobg2_0003.png
+9\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/icons/infobg2_0004.png
+10\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/icons/infobg2_0005.png
+11\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/icons/infobg2_0006.png
+12\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/icons/infobg2_0007.png
+13\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/icons/infobg2_0008.png
+14\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/icons/infobg_oldver.png
+15\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/icons/tap.png
+16\RESFILE=D:/Program Files/\x53c9\x53c9\x96c6\x6210\x5f00\x53d1\x73af\x5883/xspworkspace/heheda_yys/xsp/res/icons/titleicon.jpg
+size=16
+
+[LIB]
+size=0

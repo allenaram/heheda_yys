@@ -27,6 +27,10 @@ function 组队界面.to麒麟界面()
 	组队界面.后退()
 end
 
+function 组队界面.to卑弥呼界面()
+	组队界面.后退()
+end
+
 function 组队界面.to庭院界面()
 	组队界面.后退()
 end
