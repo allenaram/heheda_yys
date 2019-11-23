@@ -612,9 +612,12 @@ function 战斗界面.标记己方(己方已点)
 	
 	end
 	
-	mSleep(888)
-	if 操作.识别2(标识.战斗界面_己方已点) then
-		return true
+	mSleep(500)
+	for i = 1,3 do
+		if 操作.识别2(标识.战斗界面_己方已点) then
+			return true
+		end
+		mSleep(300)
 	end
 	return false
 end
