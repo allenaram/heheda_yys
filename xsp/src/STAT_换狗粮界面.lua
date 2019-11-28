@@ -247,7 +247,7 @@ function 换狗粮界面.换狗粮(狗粮位)
 		tTarRegion["左二"] = {x=292,y=297}
 		tTarRegion["中间"] = {x=537,y=312}
 		tTarRegion["右二"] = {x=818,y=331}
-		tTarRegion["右一"] = {x=1075,y=278}
+		tTarRegion["右一"] = {x=1090,y=335}
 	elseif 参数.任务 == "卑弥呼" then
 		tTarRegion["左一"] = {x=227,y=351}
 		tTarRegion["左二"] = {x=383,y=356}
