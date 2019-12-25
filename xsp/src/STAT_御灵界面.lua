@@ -3,7 +3,7 @@
 
 function 御灵界面.to神兽界面()
 	for i=1,5 do
-		if 操作.或识别({标识.御灵界面, 标识.御灵界面1, 标识.御灵界面2}) then
+		if 操作.或识别({标识.御灵界面1, 标识.御灵界面2}) then
 			break
 		elseif i==5 then
 			return 执行任务.重新识别()

@@ -4454,7 +4454,7 @@ function 执行任务.御灵()
 			return 探索界面.to御灵界面()
 		end
 		
-		if 操作.或识别({标识.御灵界面, 标识.御灵界面1, 标识.御灵界面2}, false) then
+		if 操作.或识别({标识.御灵界面1, 标识.御灵界面2}, false) then
 			keepScreen(false)
 			return 御灵界面.to神兽界面()
 		end

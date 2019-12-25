@@ -1,10 +1,10 @@
 ---------------选层函数----------------
 选层 = {}
 function 选层.层数识别预处理(X, Y)
-	-- 图像二值化 -- 
+	-- 图像二值化 --
 	local colorTbl = binarizeImage({
-		rect = {X, Y, X+27, Y+30},
-		diff = {"0x282420-0x4f4f4f"}
+		rect = {X,Y,X+32,Y+32},
+		diff = {"0x34312e-0x4f4f4f"}
 	})
 	-- 把无效行（全1行）重置成全0行 --
 	for _, row in pairs(colorTbl) do
@@ -44,40 +44,39 @@ function 选层.层数识别预处理(X, Y)
 end
 
 function 选层.选择层数(目标层数, 寻找方向, ocr)
+	local isEleven = false
+	if 目标层数 == '悲鸣' then
+		isEleven = true
+		目标层数 = '拾'
+	end
 	local x1,y1,x2,y2
 	if 寻找方向=='从上到下' then	
-		x1,y1,x2,y2 = 430, 200, 430, 300
+		x1,y1,x2,y2 = 330, 200, 330, 350
 	elseif 寻找方向=='从下到上' then
-		x1,y1,x2,y2 = 430, 300, 430, 200
+		x1,y1,x2,y2 = 330, 350, 330, 200
 	end	
 	
 	local found = false
 	local 层数按钮 = {x=-1, y=-1}
 	for i = 1, 3 do
-		local X = 333
+		local X = 250
 		keepScreen(true)
-		if 目标层数 == '悲鸣' then
-			if 操作.识别点击(按钮.大蛇界面_悲鸣) then
-				mSleep(500)
-				return true
+		for Y = 528, 132, -5 do
+			local 字符有效, colorTbl = 选层.层数识别预处理(X, Y)
+			local code, text
+			if 字符有效 then
+				code, text = ocr:getText({
+					data = colorTbl,
+					whitelist = "壹贰叁肆伍陆柒捌玖拾" 
+				})
 			end
-		else
-			for Y = 350, 115, -5 do
-				local 字符有效, colorTbl = 选层.层数识别预处理(X, Y)
-				local code, text
-				if 字符有效 then
-					code, text = ocr:getText({
-						data = colorTbl,
-						whitelist = "壹贰叁肆伍陆柒捌玖拾" 
-					})
-				end
-				if trim(text) == 目标层数 then 
-					层数按钮 = {x=X, y=Y+15}
-					操作.点击(层数按钮)
-					found = true
-					mSleep(500)
-					break
-				end
+			if trim(text) == 目标层数 
+				and not (isEleven and Y>=413) then --悲鸣
+				层数按钮 = isEleven and {x=X, y=Y+93} or {x=X, y=Y+15}
+				操作.点击(层数按钮)
+				found = true
+				mSleep(500)
+				break
 			end
 		end
 		keepScreen(false)
