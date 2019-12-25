@@ -114,7 +114,7 @@ function 战斗界面.狗粮普攻()
 			rect = 识别区域,
 			diff = {"0xe8e7e6-0x4f4f4f"}
 		})
-		code, text = ocr:getText({
+		local code, text = ocr:getText({
 			data=colorTbl,
 			whitelist = "妖术" 
 		})
