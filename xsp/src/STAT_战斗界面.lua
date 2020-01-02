@@ -75,6 +75,9 @@ function 战斗界面.to战斗胜利界面()
 			end
 			已点怪, 开局怪未点 = 战斗界面.标记(已点怪, 开局怪未点)
 			while not 己方已点 do
+				if not 操作.识别2(标识.战斗界面) then
+					return 执行任务.重新识别()
+				end
 				己方已点 = 战斗界面.标记己方(己方已点)
 			end
 		end
