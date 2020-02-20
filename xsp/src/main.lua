@@ -920,7 +920,7 @@ if 参数.交叉超鬼王 then
 	elseif 参数.超鬼王血线识别精度>100 then
 		参数.超鬼王血线识别精度=100
 	end
-	参数.超鬼王血线识别色域='0xebe6d4-0x'..string.format("%x",tostring(参数.超鬼王血线识别精度))..string.format("%x",tostring(参数.超鬼王血线识别精度))..string.format("%x",tostring(参数.超鬼王血线识别精度))
+	参数.超鬼王血线识别色域='0xebe6d4-0x'..string.format("%x",tostring(参数.超鬼王血线识别精度))..string.format("%x",tostring(参数.超鬼王血线识别精度))..string.format("%x",tostring(参数.超鬼王血线识别精度))--0xebe6d4
 	参数.超鬼王显示血线=results.超鬼王显示血线.显示血线
 --	if results.疲劳值满后=='自动购买' then
 --		参数.自动购买疲劳值=true

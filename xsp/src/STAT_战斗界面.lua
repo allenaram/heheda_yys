@@ -268,7 +268,7 @@ function 战斗界面.标记(已点怪, 开局怪未点)
 			return enemyClicked
 		-- 只标记草人 --
 		elseif 参数.超鬼王点怪方式=='标记草人' then 
-			local enemyClicked = ClickBogy(已点怪, 开局怪未点, 按钮.战斗界面_标记超鬼王区域, 标识.战斗界面_草人血量, 按钮.战斗界面_草人)
+			local enemyClicked = ClickBogy(已点怪, 开局怪未点, 标识.战斗界面_草人血量, 按钮.战斗界面_草人)
 			return enemyClicked
 		-- 只标记BOSS --	
 		elseif not 已点怪 then 
