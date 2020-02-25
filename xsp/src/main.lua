@@ -821,6 +821,13 @@ if 参数.交叉超鬼王 then
 --	if 参数.标记超鬼王 then
 --		参数.超鬼王点怪方式=results.超鬼王点怪方式
 --	end
+	--标记己方
+	if results.超鬼王是否标记己方.标记己方 then
+		参数.超鬼王标记己方 = results.超鬼王标记己方
+	else
+		参数.超鬼王标记己方 = 0
+	end
+
 	--切换阵容
 	参数.超鬼王切换阵容血线.六星=tonumber(results.六星切换阵容血线)
 	参数.超鬼王切换阵容血线.五星=tonumber(results.五星切换阵容血线)

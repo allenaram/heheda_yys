@@ -487,7 +487,9 @@ function 战斗界面.标记己方(己方已点)
 		   参数.交叉个人突破 and not(参数.主任务) and 参数.当前副任务=='个人突破' and 参数.个人突破标记己方~=0 and not(己方已点) or --副任务个人突破
 		   参数.任务=='突破' and 参数.突破方式=='寮突破' and 参数.寮突破标记己方~=0 and 参数.主任务 and not(己方已点) or --主任务寮
 		   参数.交叉寮突破 and not(参数.主任务) and 参数.当前副任务=='寮突破' and 参数.寮突破标记己方~=0 and not(己方已点) or --副任务寮突破
-		   参数.任务=='修罗战场' and 参数.修罗战场标记己方~=0 and 参数.主任务 and not(己方已点) then
+		   参数.任务=='修罗战场' and 参数.修罗战场标记己方~=0 and 参数.主任务 and not(己方已点) or 
+		   参数.任务=='超鬼王' and 参数.超鬼王标记己方~=0 and 参数.主任务 and not(己方已点) or
+		   参数.交叉超鬼王 and not(参数.主任务) and 参数.当前副任务=='超鬼王' and 参数.超鬼王标记己方~=0 and not(己方已点) then
 
 			local tTarget = 
 			{
@@ -507,6 +509,9 @@ function 战斗界面.标记己方(己方已点)
 				targetQuest = 参数.寮突破标记己方
 			elseif 参数.任务 == '修罗战场' then
 				targetQuest = 参数.修罗战场标记己方
+			elseif 参数.任务=='超鬼王' or 
+			    参数.当前副任务 == '超鬼王' and not 参数.主任务 then
+				targetQuest = 参数.超鬼王标记己方
 			end
 			操作.点击按钮(tTarget[targetQuest])
 			break
