@@ -160,16 +160,20 @@ function 房间界面.to战斗准备界面()
 					para1=getStringConfig("固定好友_para1",'????')
 					para2=getStringConfig("固定好友_para2",'????')
 					队友类型=getStringConfig("固定队友类型","好友")
+					local tarClassPattern = {}
 					if 队友类型=='好友' then
 						操作.点击按钮(按钮.房间邀请界面_好友按钮)
+						tarClassPattern = 标识.邀请界面_好友分类1
 					elseif 队友类型=='最近' then
 						操作.点击按钮(按钮.房间邀请界面_最近按钮)
+						tarClassPattern = 标识.邀请界面_好友分类2
 					elseif 队友类型=='跨区' then
 						操作.点击按钮(按钮.房间邀请界面_跨区按钮)
+						tarClassPattern = 标识.邀请界面_好友分类3
 					end
 					mSleep(500)
 					for i=1,5 do
-						if 操作.识别2(标识.房间邀请界面) then
+						if 操作.识别2(tarClassPattern) then
 							break
 						elseif i==5 then
 							return 执行任务.重新识别()

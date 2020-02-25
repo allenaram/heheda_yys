@@ -5517,6 +5517,13 @@ function 执行任务.超鬼王（主）()
 				return 执行任务.重新识别()
 			end
 			
+			if 操作.识别2(标识.寮公告界面) then
+				keepScreen(false)
+				操作.点击按钮(按钮.寮公告界面_确定)
+				mSleep(1000)
+				return 执行任务.重新识别()
+			end
+			
 			if 操作.识别2(标识.buff界面) then
 				keepScreen(false)
 				操作.点击按钮(按钮.buff界面_退出区域)
@@ -5675,6 +5682,13 @@ function 执行任务.超鬼王()
 			mSleep(3000)
 			return 执行任务.重新识别()
 		end	
+		
+		if 操作.识别2(标识.寮公告界面) then
+			keepScreen(false)
+			操作.点击按钮(按钮.寮公告界面_确定)
+			mSleep(1000)
+			return 执行任务.重新识别()
+		end
 		
 		if 操作.识别2(标识.寄养界面) then
 			keepScreen(false)
