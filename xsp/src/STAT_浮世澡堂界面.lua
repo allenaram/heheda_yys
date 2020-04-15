@@ -49,14 +49,14 @@ function 浮世澡堂界面.泡澡()
 					mSleep(1000)
 				end
 				执行任务.切换寮突破为主任务()
-			elseif 参数.交叉犬夜叉 then
+			elseif 参数.交叉死神 then
 				for i=1,2 do
 					sysLog('泡澡次数已用尽')
 					mSleep(1000)
-					sysLog('即将切换寮犬夜叉为主任务')
+					sysLog('即将切换寮死神为主任务')
 					mSleep(1000)
 				end
-				执行任务.切换犬夜叉为主任务()
+				执行任务.切换死神为主任务()
 			else
 				syslog2("泡澡次数已用尽！")
 				for var = 1,2 do
@@ -144,9 +144,9 @@ function 浮世澡堂界面.泡澡()
 		if 参数.任务=='离岛之歌' then --主任务离岛CD中
 			while mTime()<参数.离岛CD冷却时刻 do
 				sysLog('离岛CD...')
-				if 参数.交叉犬夜叉 and 参数.主任务 and (mTime()-参数.犬夜叉开始计时时刻)>1800000 then
+				if 参数.交叉死神 and 参数.主任务 and (mTime()-参数.死神开始计时时刻)>1800000 then
 					参数.寮突破CD重新计时=false
-					return 执行任务.切换犬夜叉()
+					return 执行任务.切换死神()
 				end
 				
 				if 参数.交叉年兽 and 参数.主任务 and (mTime()-参数.年兽开始计时时刻)>43200000 then

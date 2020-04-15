@@ -335,9 +335,9 @@ function 执行任务.设置流程()
 		探索界面.Next=庭院界面.to组队界面
 		探索准备界面.Next=探索界面.to庭院界面
 		
-	elseif 参数.任务=='犬夜叉' then
-		执行任务.重新识别=执行任务.犬夜叉
-		执行任务.主任务=执行任务.犬夜叉
+	elseif 参数.任务=='死神' then
+		执行任务.重新识别=执行任务.死神
+		执行任务.主任务=执行任务.死神
 		庭院界面.Next=组队界面.to房间界面2
 		组队界面.Next=房间界面.to战斗准备界面（队员）
 		房间界面.Next=战斗准备界面.to战斗界面
@@ -566,8 +566,8 @@ function 执行任务.设置交叉离岛流程()
 	神兽界面.Next=探索界面.to庭院界面
 end
 
-function 执行任务.设置交叉犬夜叉流程()
-	执行任务.重新识别=执行任务.犬夜叉
+function 执行任务.设置交叉死神流程()
+	执行任务.重新识别=执行任务.死神
 	庭院界面.Next=组队界面.to房间界面2
 	组队界面.Next=房间界面.to战斗准备界面（队员）
 	房间界面.Next=战斗准备界面.to战斗界面
@@ -715,17 +715,17 @@ function 执行任务.启动任务()
 		return 执行任务.年兽()
 	end
 	
-	if 参数.交叉犬夜叉 and 参数.犬夜叉挤车 then
-		参数.当前副任务='犬夜叉'
+	if 参数.交叉死神 and 参数.死神挤车 then
+		参数.当前副任务='死神'
 		if 参数.提示信息 then
-			syslog2('开始副任务：犬夜叉')
+			syslog2('开始副任务：死神')
 		end
-		执行任务.设置交叉犬夜叉流程()
+		执行任务.设置交叉死神流程()
 		if 参数.智能开关buff then
 			参数.调整开关buff='关'
 		end
 		mSleep(2000)
-		return 执行任务.犬夜叉()
+		return 执行任务.死神()
 	end
 	
 	if 参数.交叉寮突破 then
@@ -814,10 +814,10 @@ function 执行任务.启动任务()
 		mSleep(2000)
 		return 执行任务.妖气()
 		
-	elseif 参数.任务=='犬夜叉' then
-		syslog2('开始任务：犬夜叉')
+	elseif 参数.任务=='死神' then
+		syslog2('开始任务：死神')
 		mSleep(2000)
-		return 执行任务.犬夜叉()
+		return 执行任务.死神()
 		
 	elseif 参数.任务=='超鬼王' then
 		syslog2('开始任务：超鬼王')
@@ -870,8 +870,8 @@ function 执行任务.检查副任务()
 		return 执行任务.切换离岛()
 	end
 	
-	if 参数.交叉犬夜叉 and 参数.主任务 and (mTime()-参数.犬夜叉开始计时时刻)>1800000 then
-		return 执行任务.切换犬夜叉()
+	if 参数.交叉死神 and 参数.主任务 and (mTime()-参数.死神开始计时时刻)>1800000 then
+		return 执行任务.切换死神()
 	end
 	
 	if 参数.交叉年兽 and 参数.主任务 and (mTime()-参数.年兽开始计时时刻)>43200000 then
@@ -927,19 +927,19 @@ function 执行任务.切换个人突破()
 	return 执行任务.个人突破()
 end
 
-function 执行任务.切换犬夜叉()
+function 执行任务.切换死神()
 	参数.主任务=false
-	参数.当前副任务='犬夜叉'
-	执行任务.设置交叉犬夜叉流程()
+	参数.当前副任务='死神'
+	执行任务.设置交叉死神流程()
 	if 参数.智能开关buff then
 		参数.调整开关buff='关'
 	end
 	--操作.识别点击(按钮.真蛇消息关闭按钮,true)
 	操作.识别点击(按钮.拒绝邀请按钮,true)
 	if 参数.提示信息 then
-		syslog2('切换副任务-犬夜叉')
+		syslog2('切换副任务-死神')
 	end
-	return 执行任务.犬夜叉()
+	return 执行任务.死神()
 end
 
 function 执行任务.切换年兽()
@@ -995,13 +995,13 @@ function 执行任务.切换寮突破为主任务()
 	return 执行任务.寮突破()
 end
 
-function 执行任务.切换犬夜叉为主任务()
-	参数.任务='犬夜叉'
-	参数.交叉犬夜叉=false
+function 执行任务.切换死神为主任务()
+	参数.任务='死神'
+	参数.交叉死神=false
 	参数.主任务=true
-	参数.犬夜叉CD重新计时=false
+	参数.死神CD重新计时=false
 	执行任务.设置流程()
-	return 执行任务.犬夜叉()
+	return 执行任务.死神()
 end
 
 function 执行任务.切换超鬼王为主任务()
@@ -1731,7 +1731,7 @@ function 执行任务.大蛇队员()
 				庭院界面.开关buff()
 			end
 			
-			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉死神 then
 				keepScreen(false)
 				庭院界面.切换副任务()
 			end
@@ -1743,7 +1743,7 @@ function 执行任务.大蛇队员()
 				探索界面.开关buff()
 			end
 			
-			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉死神 then
 				keepScreen(false)
 				探索界面.切换副任务(true)
 			end
@@ -2312,7 +2312,7 @@ function 执行任务.卑弥呼队员()
 				庭院界面.开关buff()
 			end
 			
-			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉死神 then
 				keepScreen(false)
 				庭院界面.切换副任务()
 			end
@@ -2324,7 +2324,7 @@ function 执行任务.卑弥呼队员()
 				探索界面.开关buff()
 			end
 			
-			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉死神 then
 				keepScreen(false)
 				探索界面.切换副任务(true)
 			end
@@ -2862,7 +2862,7 @@ function 执行任务.觉醒队员()
 				庭院界面.开关buff()
 			end
 			
-			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉死神 then
 				keepScreen(false)
 				庭院界面.切换副任务()
 			end
@@ -2874,7 +2874,7 @@ function 执行任务.觉醒队员()
 				探索界面.开关buff()
 			end
 			
-			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉死神 then
 				keepScreen(false)
 				探索界面.切换副任务(true)
 			end
@@ -3376,7 +3376,7 @@ function 执行任务.探索队员()
 				庭院界面.开关buff()
 			end
 			
-			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉死神 then
 				keepScreen(false)
 				庭院界面.切换副任务()
 			end
@@ -3388,7 +3388,7 @@ function 执行任务.探索队员()
 				探索界面.开关buff()
 			end
 			
-			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉死神 then
 				keepScreen(false)
 				探索界面.切换副任务(true)
 			end
@@ -3415,11 +3415,11 @@ function 执行任务.探索队员()
 					end
 					
 					if not(操作.识别点击(按钮.探索界面_宝箱发现,true)) then
-						if 参数.交叉犬夜叉 then
-							if 操作.识别点击(按钮.探索界面_犬夜叉发现,true) then 
-								参数.自己发现的犬夜叉=true
+						if 参数.交叉死神 then
+							if 操作.识别点击(按钮.探索界面_死神发现,true) then 
+								参数.自己发现的死神=true
 								mSleep(2000)
-								return 执行任务.切换犬夜叉()
+								return 执行任务.切换死神()
 							end
 						end
 						if 参数.交叉年兽 then
@@ -3436,11 +3436,11 @@ function 执行任务.探索队员()
 								mSleep(1500)
 								return 战斗结算界面1.to战斗结算界面2()
 							else
-								if 参数.交叉犬夜叉 then 
-									if 操作.识别点击(按钮.探索界面_犬夜叉发现,true) then 
-										参数.自己发现的犬夜叉=true
+								if 参数.交叉死神 then 
+									if 操作.识别点击(按钮.探索界面_死神发现,true) then 
+										参数.自己发现的死神=true
 										mSleep(2000)
-										return 执行任务.切换犬夜叉()
+										return 执行任务.切换死神()
 									end 
 								end
 								if 参数.交叉年兽 then
@@ -4896,8 +4896,8 @@ function 执行任务.妖气()
 end
 ----
 
-------------犬夜叉------------
-function 执行任务.犬夜叉()
+------------死神------------
+function 执行任务.死神()
 	sysLog('重新识别界面中......')
 	while true do
 		keepScreen(true)
@@ -4925,7 +4925,7 @@ function 执行任务.犬夜叉()
 		
 		if 操作.识别2(标识.组队界面) then
 			keepScreen(false)
-			if 参数.自己发现的犬夜叉 then
+			if 参数.自己发现的死神 then
 				return 组队界面.后退()
 			else
 				return 组队界面.to房间界面2()
@@ -4974,7 +4974,7 @@ function 执行任务.犬夜叉()
 		
 		if 操作.识别2(标识.探索界面) then
 			keepScreen(false)
-			if 参数.自己发现的犬夜叉 then 
+			if 参数.自己发现的死神 then 
 				return 探索界面.切换主任务()
 			else
 				return 探索界面.to庭院界面()
@@ -5005,7 +5005,7 @@ function 执行任务.犬夜叉()
 			return 探索准备界面.to探索界面()
 		end
 		
-		if 参数.交叉犬夜叉 then
+		if 参数.交叉死神 then
 			if 操作.识别2(标识.创建队伍界面) then
 				keepScreen(false)
 				return 创建队伍界面.to组队界面()
@@ -5540,7 +5540,7 @@ function 执行任务.超鬼王（主）()
 		end
 		--主动检查
 		if 操作.识别2(标识.探索界面) then
-			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+			if 参数.交叉离岛 or 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉死神 then
 				探索界面.切换副任务()
 			end
 			return 探索界面.to超鬼王界面()

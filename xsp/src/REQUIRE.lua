@@ -5,7 +5,7 @@
 	延时倍数=1,
 	可视点击=true,	提示信息=true,	闪退重连=false,	检查后台=true,	
 	体验服=false,
-	任务='御魂',	主任务=true,		交叉个人突破=false,	交叉寮突破=false,	交叉犬夜叉=false,	交叉超鬼王=false,
+	任务='御魂',	主任务=true,		交叉个人突破=false,	交叉寮突破=false,	交叉死神=false,	交叉超鬼王=false,
 	智能开关buff=false,	开关buff表={觉醒=false,御魂=false,金币=false,经验=false},	开关buff表_temp={觉醒=false,御魂=false,金币=false,经验=false},	调整开关buff='保持',
 	接受协作=false,	协作表={排骨=false,鲜鱼=false,勾协=false,体协=false,三万=false,两万=false,一万=false},
 	自动购买体力=false,
@@ -49,8 +49,8 @@
 	
 	妖气目标={},
 	
-	犬夜叉挤车开金币buff=false, 犬夜叉自己发现开金币buff=false,
-	犬夜叉开始计时时刻=-1,	犬夜叉CD重新计时=true,	自己发现的犬夜叉=false,
+	死神挤车开金币buff=false, 死神自己发现开金币buff=false,
+	死神开始计时时刻=-1,	死神CD重新计时=true,	自己发现的死神=false,
 	
 	年兽挤车开金币buff=false, 年兽自己发现开金币buff=false,
 	年兽开始计时时刻=-1,	自己发现的年兽=false,

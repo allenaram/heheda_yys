@@ -16,7 +16,7 @@ function 探索界面.to御魂界面()
 		探索界面.开关buff()
 	end
 	
-	if 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+	if 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉死神 then
 		探索界面.切换副任务()
 	end
 
@@ -40,7 +40,7 @@ function 探索界面.to觉醒界面()
 		探索界面.开关buff()
 	end
 	
-	if 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+	if 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉死神 then
 		探索界面.切换副任务()
 	end
 
@@ -64,7 +64,7 @@ function 探索界面.to御灵界面()
 		探索界面.开关buff()
 	end
 	
-	if 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+	if 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉死神 then
 		探索界面.切换副任务()
 	end
 
@@ -90,11 +90,11 @@ function 探索界面.to探索准备界面()
 	
 	if 操作.识别2(标识.探索界面_探索发现) then
 		if 参数.任务=='探索' and not(操作.识别点击(按钮.探索界面_宝箱发现,true)) then
-			if 参数.交叉犬夜叉 then
-				if 操作.识别点击(按钮.探索界面_犬夜叉发现,true) then 
-					参数.自己发现的犬夜叉=true
+			if 参数.交叉死神 then
+				if 操作.识别点击(按钮.探索界面_死神发现,true) then 
+					参数.自己发现的死神=true
 					mSleep(1500)
-					return 执行任务.切换犬夜叉()
+					return 执行任务.切换死神()
 				end
 			end
 			if 参数.交叉年兽 then
@@ -108,11 +108,11 @@ function 探索界面.to探索准备界面()
 				操作.滑动(68,191,86,96)
 				mSleep(1000)
 				if not(操作.识别点击(按钮.探索界面_宝箱发现,true)) then
-					if 参数.交叉犬夜叉 then
-						if 操作.识别点击(按钮.探索界面_犬夜叉发现,true) then 
-							参数.自己发现的犬夜叉=true
+					if 参数.交叉死神 then
+						if 操作.识别点击(按钮.探索界面_死神发现,true) then 
+							参数.自己发现的死神=true
 							mSleep(2000)
-							return 执行任务.切换犬夜叉()
+							return 执行任务.切换死神()
 						end
 					end
 					if 参数.交叉年兽 then
@@ -133,7 +133,7 @@ function 探索界面.to探索准备界面()
 		end
 	end
 	
-	if 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+	if 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉死神 then
 		探索界面.切换副任务()
 	end
 	
@@ -173,7 +173,7 @@ function 探索界面.to庭院界面()
 		探索界面.开关buff()
 	end
 	
-	if 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉犬夜叉 then
+	if 参数.交叉寮突破 or 参数.交叉个人突破 or 参数.交叉超鬼王 or 参数.交叉死神 then
 		探索界面.切换副任务()
 	end
 	
@@ -239,7 +239,7 @@ function 探索界面.切换主任务()
 	end
 	sysLog('当前位置：探索地图')
 	
-	if (参数.自己发现的犬夜叉 and 参数.犬夜叉自己发现开金币buff) or (参数.自己发现的年兽 and 参数.年兽自己发现开金币buff) then
+	if (参数.自己发现的死神 and 参数.死神自己发现开金币buff) or (参数.自己发现的年兽 and 参数.年兽自己发现开金币buff) then
 		参数.调整开关buff='关'
 		参数.开关buff表.觉醒=false
 		参数.开关buff表.御魂=false
@@ -257,7 +257,7 @@ function 探索界面.切换主任务()
 		参数.调整开关buff='开'
 	end
 	
-	参数.自己发现的犬夜叉=false
+	参数.自己发现的死神=false
 	参数.自己发现的年兽=false
 	参数.主任务=true
 	执行任务.设置流程()
@@ -325,8 +325,8 @@ function 探索界面.切换副任务(wait)
 		return 执行任务.切换离岛()
 	end
 	
-	if 参数.交叉犬夜叉 and 参数.主任务 and (mTime()-参数.犬夜叉开始计时时刻)>1800000 then
-		return 执行任务.切换犬夜叉()
+	if 参数.交叉死神 and 参数.主任务 and (mTime()-参数.死神开始计时时刻)>1800000 then
+		return 执行任务.切换死神()
 	end
 	
 	if 参数.交叉年兽 and 参数.主任务 and (mTime()-参数.年兽开始计时时刻)>43200000 then

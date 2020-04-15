@@ -28,8 +28,8 @@ function 个人突破界面.to个人突破准备界面()
 		return 执行任务.切换离岛()
 	end
 	
-	if 参数.交叉犬夜叉 and 参数.主任务 and (mTime()-参数.犬夜叉开始计时时刻)>1800000 then
-		return 执行任务.切换犬夜叉()
+	if 参数.交叉死神 and 参数.主任务 and (mTime()-参数.死神开始计时时刻)>1800000 then
+		return 执行任务.切换死神()
 	end
 	
 	if 参数.交叉年兽 and 参数.主任务 and (mTime()-参数.年兽开始计时时刻)>43200000 then
@@ -92,14 +92,14 @@ function 个人突破界面.to个人突破准备界面()
 				mSleep(1000)
 			end
 			执行任务.切换寮突破为主任务()
-		elseif 参数.交叉犬夜叉 then
+		elseif 参数.交叉死神 then
 			for i=1,2 do
 				sysLog('个人突破券已用尽')
 				mSleep(1000)
-				sysLog('即将切换犬夜叉为主任务')
+				sysLog('即将切换死神为主任务')
 				mSleep(1000)
 			end
-			执行任务.切换犬夜叉为主任务()
+			执行任务.切换死神为主任务()
 		else
 			if 参数.提示信息 then
 				syslog2("没有突破券了！");
@@ -352,8 +352,8 @@ function 寮突破界面.to寮突破准备界面()
 		return 执行任务.切换离岛()
 	end
 	
-	if 参数.交叉犬夜叉 and (mTime()-参数.犬夜叉开始计时时刻)>1800000 then
-		return 执行任务.切换犬夜叉()
+	if 参数.交叉死神 and (mTime()-参数.死神开始计时时刻)>1800000 then
+		return 执行任务.切换死神()
 	end
 	
 	if 参数.交叉年兽 and (mTime()-参数.年兽开始计时时刻)>43200000 then
@@ -388,9 +388,9 @@ function 寮突破界面.to寮突破准备界面()
 					参数.寮突破开始计时时刻=mTime()
 				end
 				while true do
-					if 参数.交叉犬夜叉 and 参数.主任务 and (mTime()-参数.犬夜叉开始计时时刻)>1800000 then
+					if 参数.交叉死神 and 参数.主任务 and (mTime()-参数.死神开始计时时刻)>1800000 then
 						参数.寮突破CD重新计时=false
-						return 执行任务.切换犬夜叉()
+						return 执行任务.切换死神()
 					end
 					
 					if 参数.交叉年兽 and 参数.主任务 and (mTime()-参数.年兽开始计时时刻)>43200000 then
@@ -436,9 +436,9 @@ function 寮突破界面.to寮突破准备界面()
 					参数.寮突破开始计时时刻=mTime()
 				end
 				while true do
-					if 参数.交叉犬夜叉 and 参数.主任务 and (mTime()-参数.犬夜叉开始计时时刻)>1800000 then
+					if 参数.交叉死神 and 参数.主任务 and (mTime()-参数.死神开始计时时刻)>1800000 then
 						参数.寮突破CD重新计时=false
-						return 执行任务.切换犬夜叉()
+						return 执行任务.切换死神()
 					end
 					
 					if 参数.交叉年兽 and 参数.主任务 and (mTime()-参数.年兽开始计时时刻)>43200000 then

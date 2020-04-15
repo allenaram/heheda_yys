@@ -66,7 +66,7 @@ function 组队界面.to房间界面()	--妖气封印
 	end
 	sysLog('当前位置：组队面板')
 	
-	if (参数.交叉犬夜叉 and 参数.主任务 and (mTime()-参数.犬夜叉开始计时时刻)>1800000) or
+	if (参数.交叉死神 and 参数.主任务 and (mTime()-参数.死神开始计时时刻)>1800000) or
 	   (参数.交叉年兽 and 参数.主任务 and (mTime()-参数.年兽开始计时时刻)>43200000) or
 	   (参数.交叉离岛 and 参数.主任务 and mTime()>=参数.离岛CD冷却时刻) then
 		return 组队界面.to庭院界面()
@@ -202,7 +202,7 @@ function 组队界面.to房间界面()	--妖气封印
 	
 end
 
-function 组队界面.to房间界面2()	--年兽、石距、犬夜叉等
+function 组队界面.to房间界面2()	--年兽、石距、死神等
 	for i=1,5 do
 		if 操作.识别2(标识.组队界面) then
 			break
@@ -216,41 +216,41 @@ function 组队界面.to房间界面2()	--年兽、石距、犬夜叉等
 	操作.滑动(264, 252, 240, 602)
 	mSleep(1000)
 	
-	if 参数.当前副任务=='犬夜叉' then
-		if 操作.或识别({标识.组队界面_犬夜叉CD1,标识.组队界面_犬夜叉CD2}) then --or not((mTime()-参数.犬夜叉开始计时时刻)>1800000) then
-			sysLog('犬夜叉CD中...')
-			if 参数.任务=='犬夜叉' then
-				if 参数.犬夜叉CD重新计时 then
-					参数.犬夜叉开始计时时刻=mTime()
+	if 参数.当前副任务=='死神' then
+		if 操作.或识别({标识.组队界面_死神CD1,标识.组队界面_死神CD2}) then --or not((mTime()-参数.死神开始计时时刻)>1800000) then
+			sysLog('死神CD中...')
+			if 参数.任务=='死神' then
+				if 参数.死神CD重新计时 then
+					参数.死神开始计时时刻=mTime()
 				end
 				while true do
-					if (mTime()-参数.犬夜叉开始计时时刻)>1800000 then
-						参数.犬夜叉CD重新计时=true
+					if (mTime()-参数.死神开始计时时刻)>1800000 then
+						参数.死神CD重新计时=true
 						return 执行任务.重新识别()
 					end
 					
 					if 参数.交叉寮突破 and not(参数.寮突已攻破) and 参数.主任务 and (mTime()-参数.寮突破开始计时时刻)>参数.寮突破间隔 then
-						参数.犬夜叉CD重新计时=false
+						参数.死神CD重新计时=false
 						return 执行任务.切换寮突破()
 					end
 					
 					if 参数.交叉个人突破 and 参数.主任务 and 参数.个人突破穿插依据=='CD冷却后切换' and (mTime()-参数.个人突破开始计时时刻)>参数.个人突破间隔 then
-						参数.犬夜叉CD重新计时=false
+						参数.死神CD重新计时=false
 						return 执行任务.切换个人突破()
 					end
 					
 					mSleep(3000)
 				end
-			elseif 参数.交叉犬夜叉 then
+			elseif 参数.交叉死神 then
 				操作.点击按钮(按钮.组队界面_关闭按钮)
 				mSleep(1000)
 				if not(操作.或识别({标识.庭院界面1,标识.庭院界面2})) then
 					return 执行任务.重新识别()
 				end
 				
-				参数.犬夜叉开始计时时刻=mTime()
+				参数.死神开始计时时刻=mTime()
 				
-				if 参数.犬夜叉挤车开金币buff then
+				if 参数.死神挤车开金币buff then
 					参数.调整开关buff='关'
 					参数.开关buff表.觉醒=false
 					参数.开关buff表.御魂=false
@@ -276,13 +276,13 @@ function 组队界面.to房间界面2()	--年兽、石距、犬夜叉等
 			end
 		end
 		
-		操作.点击按钮(按钮.组队界面_犬夜叉按钮)
+		操作.点击按钮(按钮.组队界面_死神按钮)
 		mSleep(666)
 		操作.点击按钮(按钮.组队界面_匹配按钮)
 		mSleep(666)
 		
 		while true do
-			if not(操作.识别2(标识.组队界面_犬夜叉匹配中)) then
+			if not(操作.识别2(标识.组队界面_死神匹配中)) then
 				break
 			end
 			sysLog('排队中...')

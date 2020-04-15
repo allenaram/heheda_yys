@@ -17,8 +17,8 @@ function 离岛界面.to道场（居酒屋）界面()
 		执行任务.识别超鬼王()
 	end
 	
-	if 参数.交叉犬夜叉 and 参数.主任务 and (mTime()-参数.犬夜叉开始计时时刻)>1800000 then
-		return 执行任务.切换犬夜叉()
+	if 参数.交叉死神 and 参数.主任务 and (mTime()-参数.死神开始计时时刻)>1800000 then
+		return 执行任务.切换死神()
 	end
 	
 	if 参数.交叉年兽 and 参数.主任务 and (mTime()-参数.年兽开始计时时刻)>43200000 then
@@ -87,14 +87,14 @@ function 离岛界面.to浮世澡堂界面()
 					mSleep(1000)
 				end
 				执行任务.切换寮突破为主任务()
-			elseif 参数.交叉犬夜叉 then
+			elseif 参数.交叉死神 then
 				for i=1,2 do
 					sysLog(' ')
 					mSleep(1000)
-					sysLog('即将切换寮犬夜叉为主任务')
+					sysLog('即将切换寮死神为主任务')
 					mSleep(1000)
 				end
-				执行任务.切换犬夜叉为主任务()
+				执行任务.切换死神为主任务()
 			else
 				syslog2("结束任务！")
 				for var = 1,2 do

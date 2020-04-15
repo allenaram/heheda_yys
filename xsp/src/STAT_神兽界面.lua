@@ -27,14 +27,14 @@ function 神兽界面.to战斗准备界面()
 				mSleep(1000)
 			end
 			执行任务.切换寮突破为主任务()
-		elseif 参数.交叉犬夜叉 then
+		elseif 参数.交叉死神 then
 			for i=1,2 do
 				sysLog('个人突破券已用尽')
 				mSleep(1000)
-				sysLog('即将切换寮犬夜叉为主任务')
+				sysLog('即将切换寮死神为主任务')
 				mSleep(1000)
 			end
-			执行任务.切换犬夜叉为主任务()
+			执行任务.切换死神为主任务()
 		else
 			if 参数.提示信息 then
 				syslog2("没有御灵券了！");
