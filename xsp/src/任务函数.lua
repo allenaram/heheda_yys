@@ -1513,7 +1513,7 @@ function 执行任务.大蛇()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2, 标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			return 战斗胜利界面.to战斗结算界面2()
 		end
@@ -1817,7 +1817,7 @@ function 执行任务.大蛇队员()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2, 标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			参数.等待邀请次数=0
 			return 战斗胜利界面.to战斗结算界面2()
@@ -2094,7 +2094,7 @@ function 执行任务.卑弥呼()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			return 战斗胜利界面.to战斗结算界面2()
 		end
@@ -2398,7 +2398,7 @@ function 执行任务.卑弥呼队员()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			参数.等待邀请次数=0
 			return 战斗胜利界面.to战斗结算界面2()
@@ -2656,7 +2656,7 @@ function 执行任务.觉醒()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			return 战斗胜利界面.to战斗结算界面2()
 		end
@@ -2926,7 +2926,7 @@ function 执行任务.觉醒队员()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			参数.等待邀请次数=0
 			return 战斗胜利界面.to战斗结算界面2()
@@ -3174,7 +3174,7 @@ function 执行任务.探索()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			return 战斗胜利界面.to战斗结算界面2()
 		end
@@ -3505,7 +3505,7 @@ function 执行任务.探索队员()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			参数.等待邀请次数=0
 			return 战斗胜利界面.to战斗结算界面2()
@@ -3746,7 +3746,7 @@ function 执行任务.个人突破()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			return 战斗胜利界面.to战斗结算界面2()
 		end
@@ -4017,7 +4017,7 @@ function 执行任务.寮突破()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			return 战斗胜利界面.to战斗结算界面2()
 		end
@@ -4284,7 +4284,7 @@ function 执行任务.业原火()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			return 战斗胜利界面.to战斗结算界面2()
 		end
@@ -4520,7 +4520,7 @@ function 执行任务.御灵()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			return 战斗胜利界面.to战斗结算界面2()
 		end
@@ -4732,7 +4732,7 @@ function 执行任务.妖气()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			return 战斗胜利界面.to战斗结算界面2()
 		end
@@ -4947,7 +4947,7 @@ function 执行任务.死神()
 			return 战斗界面.to战斗胜利界面()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			return 战斗胜利界面.to战斗结算界面2()
 		end
@@ -5206,7 +5206,7 @@ function 执行任务.年兽()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			return 战斗胜利界面.to战斗结算界面2()
 		end
@@ -5583,7 +5583,7 @@ function 执行任务.超鬼王()
 			return 战斗界面.to战斗胜利界面()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			return 战斗胜利界面.to超鬼王界面()
 		end
@@ -5819,7 +5819,7 @@ function 执行任务.修罗战场()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			return 战斗胜利界面.to战斗结算界面2()
 		end
@@ -6249,7 +6249,7 @@ function 执行任务.离岛之歌()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			return 战斗胜利界面.to战斗结算界面2()
 		end
@@ -6528,7 +6528,7 @@ function 执行任务.轮回秘境()
 			return 执行任务.登录游戏()
 		end
 		
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2,标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			return 战斗胜利界面.to战斗结算界面2()
 		end

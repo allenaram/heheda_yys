@@ -58,6 +58,16 @@ function 战斗界面.to战斗胜利界面()
 		end
 	end
 	
+	local ocr
+	if 参数.强制自动战斗 then
+		ocr, _ = createOCR({
+		type = "tesseract",
+		path = "res/", 
+		lang = "zi_shou",
+		psm=6
+	})
+	end
+	
 	local 已点怪=false
 	local 开局怪未点=true
 	local 己方已点 = false
@@ -79,6 +89,14 @@ function 战斗界面.to战斗胜利界面()
 					return 执行任务.重新识别()
 				end
 				己方已点 = 战斗界面.标记己方(己方已点)
+			end
+			
+			if 参数.强制自动战斗 then
+				local text = 操作.字符识别({26,574,51,601}, {"0xf5f0dd-0x4f4f4f"}, {"自手"}, nil, ocr)
+				if text ~= '自' then
+					操作.点击按钮(按钮.战斗界面_自动战斗)
+					mSleep(800)
+				end
 			end
 		end
 		if (参数.任务=='大蛇' and 参数.御魂点怪 or 

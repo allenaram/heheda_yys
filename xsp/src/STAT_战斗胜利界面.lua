@@ -4,7 +4,7 @@
 function 战斗胜利界面.to战斗结算界面2()
 	for i=1,10 do
 		keepScreen(true)
-		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2},false) then
+		if 操作.或识别({标识.战斗胜利界面1,标识.战斗胜利界面2, 标识.战斗胜利界面3},false) then
 			keepScreen(false)
 			break
 		elseif 操作.识别2(标识.战斗失败界面) then

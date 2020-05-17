@@ -4,7 +4,8 @@ function 操作.点击(p,dx,dy)
 	local dx = dx or 0
 	local dy = dy or 0
 	holdtime=100
-	math.randomseed(tostring(os.time()):reverse():sub(1, 7))
+	--math.randomseed(tostring(os.time()):reverse():sub(1, 7))
+	math.randomseed(tostring(mTime()):reverse():sub(1, 7))
 	p.x = p.x + math.random(0,dx)
 	p.y = p.y + math.random(0,dy)
 	touchDown(1, p.x, p.y)

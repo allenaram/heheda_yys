@@ -92,7 +92,8 @@ if true then
 		myhud=createHUD()
 	end
 	--自动战斗设置
-	参数.技能可选 = results.技能可选.自动战斗技能可选
+	参数.技能可选 = results.自动战斗.自动战斗技能可选
+	参数.强制自动战斗 = results.自动战斗.自动、手动检测
 	--体力用完
 	if results.体力用完=='关闭Buff并结束主任务' then
 		参数.自动购买体力=false
@@ -137,6 +138,7 @@ if 参数.任务=='御魂' then
 	elseif results.御魂选择BOSS=='业原火' then
 		参数.任务='业原火'
 		--选择层数
+		参数.业原火_使用默认层数 = results.业原火_使用默认层数.默认当前层数
 		参数.业原火层数=results.业原火层数 
 		--标记
 		参数.业原火_点怪 = results.业原火是否点怪.点怪
@@ -535,6 +537,7 @@ if 参数.任务=='御灵' then
 	--御灵目标
 	参数.御灵目标=results.御灵目标
 	--选择层数
+	参数.御灵_使用默认层数 = results.御灵_使用默认层数.默认当前层数
 	if results.御灵层数=='一层' then 
 		参数.御灵层数='壹'
 	elseif results.御灵层数=='二层' then

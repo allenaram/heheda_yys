@@ -55,13 +55,13 @@ function 神兽界面.to战斗准备界面()
 	})
 	
 	while true do
-		if 神兽界面.选择层数(参数.御灵层数, '从上到下', ocr) then
+		if 参数.御灵_使用默认层数 or 神兽界面.选择层数(参数.御灵层数, '从上到下', ocr) then
 			操作.点击按钮(按钮.神兽界面_挑战按钮)
 			mSleep(2000)
 			ocr:release()
 			return 神兽界面.Next()
 		end
-		if 神兽界面.选择层数(参数.御灵层数, '从下到上', ocr) then
+		if 参数.御灵_使用默认层数 or 神兽界面.选择层数(参数.御灵层数, '从下到上', ocr) then
 			操作.点击按钮(按钮.神兽界面_挑战按钮)
 			mSleep(2000)
 			ocr:release()
