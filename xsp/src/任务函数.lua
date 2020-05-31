@@ -226,7 +226,7 @@ function 执行任务.设置流程()
 			探索准备界面.Next = 探索创建队伍界面.to房间界面
 			探索创建队伍界面.Next = 房间界面.to探索关卡界面
 			房间界面.Next = 探索关卡界面.to战斗准备界面
-			探索关卡退出界面.Next=重邀界面.to探索邀请界面
+			探索关卡退出界面.Next=重邀界面.to房间界面
 			重邀界面.Next=房间界面.to探索关卡界面
 		end
 		探索关卡界面.Next=战斗准备界面.to战斗界面
@@ -3246,7 +3246,7 @@ function 执行任务.探索()
 		if 参数.探索组队类型=='队长' then
 			if 操作.识别2(标识.重邀界面) then
 				keepScreen(false)
-				return 重邀界面.to探索邀请界面()
+				return 重邀界面.to房间界面()
 			end
 		end
 		
