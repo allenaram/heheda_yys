@@ -57,7 +57,7 @@ function 房间界面.to战斗准备界面()
 			if not 操作.或识别({按钮.房间界面_队员1邀请按钮,按钮.房间界面_队员2邀请按钮}) then
 				break
 			end
-		elseif 参数.队伍人数==2 or not(参数.主任务) then 
+		elseif 参数.队伍人数==2 or not 参数.主任务 then 
 			if not 操作.与识别({按钮.房间界面_队员1邀请按钮,按钮.房间界面_队员2邀请按钮}) then
 				break
 			end
@@ -65,7 +65,7 @@ function 房间界面.to战斗准备界面()
 		
 		sysLog('等待队员中......')
 		
-		if not(操作.识别2(标识.房间界面)) then
+		if not 操作.识别2(标识.房间界面) then
 			return 执行任务.重新识别()
 		end		
 		
@@ -84,15 +84,23 @@ function 房间界面.to战斗准备界面()
 					end
 				end
 				
-				操作.或识别点击({按钮.房间界面_队员1邀请按钮,按钮.房间界面_队员2邀请按钮})
+				if not 操作.或识别点击({按钮.房间界面_队员1邀请按钮,按钮.房间界面_队员2邀请按钮}) then
+					break
+				end
 				mSleep(888)
 				if 参数.房间邀请目标=='固定队友' then
 					固定队友_is_set=getNumberConfig("固定队友_is_set",-1)
 					队友类型=getStringConfig("固定队友类型","好友")
-					if 参数.重设固定好友 or 固定队友_is_set==-1 or 队友类型=='寮友' then
-						if 队友类型=='寮友' then
+					if 参数.重设固定好友 or 固定队友_is_set==-1 or (参数.任务~='探索' and 队友类型=='寮友') or (参数.任务=='探索' and 队友类型=='最近') then
+						if 参数.任务~='探索' and 队友类型=='寮友' then
 							for i=1,5 do
-								toast('检测到当前固定队友为寮友，当前任务无法邀请寮友，请重设固定队友！')
+								toast('检测到当前固定队友为【寮友】，当前任务无法邀请寮友，请重设固定队友！')
+								mSleep(1000)
+							end
+						end
+						if 参数.任务=='探索' and 队友类型=='最近' then
+							for i=1,5 do
+								toast('检测到当前固定队友为【最近队友】，当前任务无法邀请寮友，请重设固定队友！')
 								mSleep(1000)
 							end
 						end
@@ -111,9 +119,9 @@ function 房间界面.to战斗准备界面()
 							mSleep(2000)
 						end
 						if 操作.识别2(标识.邀请界面_好友分类1) then
-							setStringConfig("固定队友类型","好友")
+							setStringConfig("固定队友类型",参数.任务~='探索' and "好友" or "寮友")
 						elseif 操作.识别2(标识.邀请界面_好友分类2) then
-							setStringConfig("固定队友类型","最近")
+							setStringConfig("固定队友类型",参数.任务~='探索' and "最近" or "好友")
 						elseif 操作.识别2(标识.邀请界面_好友分类3) then
 							setStringConfig("固定队友类型","跨区")
 						end
@@ -161,15 +169,28 @@ function 房间界面.to战斗准备界面()
 					para2=getStringConfig("固定好友_para2",'????')
 					队友类型=getStringConfig("固定队友类型","好友")
 					local tarClassPattern = {}
-					if 队友类型=='好友' then
-						操作.点击按钮(按钮.房间邀请界面_好友按钮)
-						tarClassPattern = 标识.邀请界面_好友分类1
-					elseif 队友类型=='最近' then
-						操作.点击按钮(按钮.房间邀请界面_最近按钮)
-						tarClassPattern = 标识.邀请界面_好友分类2
-					elseif 队友类型=='跨区' then
-						操作.点击按钮(按钮.房间邀请界面_跨区按钮)
-						tarClassPattern = 标识.邀请界面_好友分类3
+					if 参数.任务~="探索" then
+						if 队友类型=='好友' then
+							操作.点击按钮(按钮.房间邀请界面_好友按钮)
+							tarClassPattern = 标识.邀请界面_好友分类1
+						elseif 队友类型=='最近' then
+							操作.点击按钮(按钮.房间邀请界面_最近按钮)
+							tarClassPattern = 标识.邀请界面_好友分类2
+						elseif 队友类型=='跨区' then
+							操作.点击按钮(按钮.房间邀请界面_跨区按钮)
+							tarClassPattern = 标识.邀请界面_好友分类3
+						end
+					else
+						if 队友类型=='寮友' then
+							操作.点击按钮(按钮.房间邀请界面_好友按钮)
+							tarClassPattern = 标识.邀请界面_好友分类1
+						elseif 队友类型=='好友' then
+							操作.点击按钮(按钮.房间邀请界面_最近按钮)
+							tarClassPattern = 标识.邀请界面_好友分类2
+						elseif 队友类型=='跨区' then
+							操作.点击按钮(按钮.房间邀请界面_跨区按钮)
+							tarClassPattern = 标识.邀请界面_好友分类3
+						end
 					end
 					mSleep(500)
 					for i=1,5 do
@@ -234,15 +255,37 @@ function 房间界面.to战斗准备界面()
 		mSleep(500)
 	end
 	
+	--二次验证队员数量
+	mSleep(500)
+	while true do
+		if 参数.队伍人数==3 and 参数.主任务 then
+			if not 操作.或识别({按钮.房间界面_队员1邀请按钮,按钮.房间界面_队员2邀请按钮}) then
+				break
+			end
+		elseif 参数.队伍人数==2 or not 参数.主任务 then 
+			if not 操作.与识别({按钮.房间界面_队员1邀请按钮,按钮.房间界面_队员2邀请按钮}) then
+				break
+			end
+		end
+		return 执行任务.重新识别()
+	end
 	参数.开始等待队友时刻=-1
 	操作.点击按钮(按钮.房间界面_开始战斗按钮)
 	sysLog('开始战斗')
+	if 参数.任务 == '探索' then
+		参数.探索当前滑屏数=0
+		参数.BOSS已挑战=0
+	end
 	mSleep(3000) 
 	if 操作.或识别({标识.房间界面, 标识.房间邀请界面, 标识.房间退出界面, 标识.房间界面好友资料}) then
 		return 执行任务.重新识别()
 	end
 	return 房间界面.Next()
 	
+end
+
+function 房间界面.to探索关卡界面()
+	房间界面.to战斗准备界面()--复用
 end
 
 function 房间界面.to战斗准备界面（队员）()
@@ -311,6 +354,10 @@ function 房间界面.to战斗准备界面（队员）()
 	房间界面.Next()
 end
 
+function 房间界面.to探索关卡界面（队员）()
+	房间界面.to战斗准备界面（队员）()
+end
+
 function 房间界面.退出房间()
 	操作.点击按钮(按钮.房间界面_离开队伍按钮)
 	mSleep(666)
@@ -359,6 +406,14 @@ function 房间退出界面.to创建队伍界面()
 	操作.点击按钮(按钮.房间退出界面_确定按钮)
 	mSleep(500)
 	return 房间退出界面.Next()
+end
+
+function 房间退出界面.to探索界面()
+	sysLog('当前位置：房间-退出')
+	mSleep(2000)  --留给用户2秒时间决定是否真的退出
+	操作.点击按钮(按钮.房间退出界面_确定按钮)
+	mSleep(500)
+	return 探索界面.to探索准备界面()
 end
 ----
 
@@ -455,6 +510,9 @@ function 房间界面好友资料.返回()
 	sysLog("误点好友资料，即刻返回")
 	操作.点击按钮(按钮.房间界面好友资料_返回按钮)
 	参数.cnt=8
+	if 参数.任务 == "探索" then
+		return 房间界面.to探索关卡界面()
+	end
 	return 房间界面.to战斗准备界面()
 end
 ----
